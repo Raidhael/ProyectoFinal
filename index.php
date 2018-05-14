@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once './includes/conexiones/conexion-global.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,89 +18,66 @@
     <link rel="stylesheet" href="/assets/css/ss-style.css">
 </head>
 <body>
+
 <?php
-     require_once 'includes/navbar.inc.php';
+     require_once './includes/navbar.inc.php';
+     require_once './includes/header.inc.php';
 ?>
-    <header class="ss-main-header">
-    <div class="ss-logo-cine">
-        <a href="/">
-            <img src="assets/images/PNG/logo-cine.png" alt="Logotipo">
-        </a>
-    </div>
-        <h1> Inicio</h1>
-    </header>
+
     <main class="ss-main-container">
         <div class="container-fluid">
             <section class="row">
                 <article class="ss-grid-ultimas-peliculas">
                     <h2 class="ss-header-item"> Ultimas Peliculas</h2>
-                    <figure class="ss-img-slider">
-                        <img src="assets/images/JPG/AVENGERS.jpg" alt="Pelicula1">
-                    </figure>
-                    <div class="ss-item-slider ss-item-titulo">
-                         <h4>Titulo</h4>
-                    </div>                   
-                    <div class="ss-item-slider ss-item-specs">
-                         <h5>Tipo</h5>
-                    </div>
-                    <div class="ss-item-duracion">
-                        <h5>Duración</h5>
-                    </div>
-                    <div class="ss-item-slider ss-item-sipnopsis">
-                         Sinopsis: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto laboriosam dolorem veniam molestiae nostrum autem, alias tenetur consectetur harum ex minus fugit eum molestias culpa atque enim distinctio nisi id.
-                    </div> 
-                
-                    <div class="ss-slider-new-navigation">
-                    <span class="ss-slider-navigation-left">
-                        <?php echo file_get_contents('./assets/images/SVG/flecha-left.svg');?>
-                        </span>
-                        <span class="ss-slider-navigation-right">
-                        <?php echo file_get_contents('./assets/images/SVG/flecha-right.svg');?>
-                        </span>
+                    <?php
+                    $sql = 'SELECT * FROM pelicula';
+                    $resultado = $conexion->query($sql);
+                    $pelicula = $resultado->fetch(PDO::FETCH_ASSOC);
+                    echo '
+                        <figure id="'.$pelicula['id_pelicula'].'" class="ss-img-slider">
+                            <a href="cartelera.php?id='.$pelicula['id_pelicula'].'"><img src="'.$pelicula['img_pelicula'].'" alt="'.$pelicula['titulo'].'"></a>
+                        </figure>
+                        <div class="ss-item-slider ss-item-titulo">  <h4>'.$pelicula['titulo'].'</h4>     </div>                   
+                        <div class="ss-item-slider ss-item-specs">   <h5>'.$pelicula['tipo'].'</h5>       </div>
+                        <div class="ss-item-duracion">              <h5>'.$pelicula['duracion'].'min</h5>    </div>
+                        <div class="ss-item-slider ss-item-sipnopsis">
+                            '.$pelicula['sipnopsis'].' 
+                        </div>';
+                    ?>
 
+                    <div class="ss-slider-new-navigation">
+                        <span class="ss-slider-navigation-left">
+                            <?php echo file_get_contents('./assets/images/SVG/flecha-left.svg');?>
+                            </span>
+                            <span class="ss-slider-navigation-right">
+                            <?php echo file_get_contents('./assets/images/SVG/flecha-right.svg');?>
+                        </span>
                     </div>
                 </article>
             </section>
                 <article class="ss-grid-cartelera">
                 <!-- GRID FORMATEADO PARA CABECERA JUNTO A DOS FILAS DE 3 ELEMENTOS -->
                     <h2 class="ss-header-item">Cartelera</h2>
-                    <div class="ss-grid-cartelera-item">
-                        <figure>    
-                            <img  class="img-responsive" src="./assets/images/JPG/avengers.jpg" alt="">    
-                            <figcaption><h5 class="ss-cartelera-titulo">Titulo Ejemplo</h5></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ss-grid-cartelera-item">
-                        <figure>    
-                            <img  class="img-responsive" src="./assets/images/JPG/avengers.jpg" alt="">    
-                            <figcaption><h5 class="ss-cartelera-titulo">Titulo Ejemplo</h5></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ss-grid-cartelera-item">
-                        <figure>    
-                            <img  class="img-responsive" src="./assets/images/JPG/avengers.jpg" alt="">    
-                            <figcaption><h5 class="ss-cartelera-titulo">Titulo Ejemplo</h5></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ss-grid-cartelera-item">
-                        <figure>    
-                            <img  class="img-responsive" src="./assets/images/JPG/avengers.jpg" alt="">    
-                            <figcaption><h5 class="ss-cartelera-titulo">Titulo Ejemplo</h5></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ss-grid-cartelera-item">
-                        <figure>    
-                            <img  class="img-responsive" src="./assets/images/JPG/avengers.jpg" alt="">    
-                            <figcaption><h5 class="ss-cartelera-titulo">Titulo Ejemplo</h5></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ss-grid-cartelera-item">
-                        <figure>    
-                            <img  class="img-responsive" src="./assets/images/JPG/avengers.jpg" alt="">    
-                            <figcaption><h5 class="ss-cartelera-titulo">Titulo Ejemplo</h5></figcaption>
-                        </figure>
-                    </div>
+
+                    <?php 
+                        $sql = 'SELECT id_pelicula , titulo , img_pelicula FROM pelicula  ORDER BY id_pelicula DESC LIMIT 6';
+                        $resultado = $conexion->query($sql);
+                        while (($peliculas =$resultado->fetch(PDO::FETCH_ASSOC)) != null ){
+                        echo  '<div class="ss-grid-cartelera-item">
+                                    <a href="./cartelera.php?id='.$peliculas['id_pelicula'].'">
+                                        <figure id ="'.$peliculas['id_pelicula'].'">    
+                                            <img  class="img-responsive" src="'.$peliculas['img_pelicula'].'" alt="'.$peliculas['titulo'].'">    
+                                            <figcaption><h5 class="ss-cartelera-titulo">'.$peliculas['titulo'].'</h5></figcaption>
+                                        </figure>
+                                    </a>
+                                </div>';
+                        }
+                        
+                    
+                    ?>
+
                     <!--TODO:: REPETIR ESTE ELEMENTO 6 VECES -->
+                    
                 </article>
             </section>
             <section class="row">

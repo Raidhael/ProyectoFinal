@@ -216,15 +216,17 @@ header h1 {
     padding: 0.5px;
 }
 .ss-img-slider {
+    
     grid-column: 1 /span 2;
     grid-row: 2;
     position: relative;
 }
 .ss-img-slider img{
+    padding: 0!important;
     width: 100%;
     height: 100%;
+    max-height: 195px;
     object-fit: cover;
-    border: 2px solid #111;
 }
 .ss-item-titulo , .ss-item-specs , .ss-item-duracion , .ss-item-sipnopsis {
     border: 0.2px solid rgb(19, 77, 77);
@@ -253,6 +255,10 @@ header h1 {
     grid-column: 1 /span 2;
     grid-row: 5;
     text-align: justify;
+    overflow: scroll;
+    max-height: 100px;
+    font-size: 12px;
+    font-weight: normal;
     
 }
 .ss-slider-new-navigation {
@@ -268,7 +274,7 @@ header h1 {
     margin: 0;
     stroke: rgba(253, 255, 255, 0.616);
     fill: rgb(0, 0, 0);
-    transition: 1s;
+    transition: 1.2s ease;
     animation: ss-parpadeo 5s infinite;
     border-radius: 25px;
 }
@@ -304,11 +310,47 @@ header h1 {
     height: 25%;
     width: 45%;
     object-fit: cover;
-    
+     
+}
+.ss-rotacion-slider-nav{
+    transform: rotateX(720deg);
+}
+ /*Animaciones carousel*/
+
+ .ss-fade-in {
+	opacity: 1;
+	animation-name: ss-fade-in;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
 }
 
-/*FIN DE ANIMACION SVG*/
+@keyframes ss-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.ss-fade-out {
+	opacity: 0;
+	animation-name: ss-fade-out;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-duration: 1s;
+}
 
+@keyframes ss-fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+/*FIN DE ANIMACION SVG*/
+/*FIN ULTIMAS PELICULAS*/
 /*Cartelera*/
     .ss-grid-cartelera{
         display: grid;
@@ -335,6 +377,14 @@ header h1 {
     }
 /*Fin ultima promocion*/
 /*FIN MAIN*/
+
+
+/*MODALES BS*/
+.modal-content {
+    background:transparent!important;
+    color:white!important;
+}
+/*FIN MODALES BS*/
 @media only screen and (min-width: 1080px) {
     .row{
         margin-top: 10%!important;
@@ -349,9 +399,8 @@ header h1 {
         min-height: 94.841px;
         top: 0;
         left:0;
-        object-fit: cover;
+        
         border-radius: 20%;
-        background:#fff;
         margin : 0 1rem 0 0;
     }
     
@@ -362,7 +411,7 @@ header h1 {
         margin:0;
         width: 100%;
         height: 13vh;
-        background: radial-gradient(ellipse at center, rgba(42,55,60,1) 0%,rgba(27,42,47,1) 100%);
+        background: rgb(0, 0, 0);
         color:white;
         z-index: 400;
     }
@@ -398,19 +447,21 @@ header h1 {
             grid-column: 1;
             grid-row: 2 / span 3;
             background-color: #fff;
-            border: 2px solid #111;
+            border: 1px solid #111;
 
         }
         .ss-img-slider img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            max-height: 520px!important;
         }
         .ss-item-titulo{
             grid-row: 2;
         }
         .ss-item-sipnopsis{
             grid-row: 4;
+            max-height: 400px;
         }
         .ss-item-sipnopsis p {
             overflow: scroll;
@@ -469,14 +520,6 @@ header h1 {
             stroke-width: 1;
             background:transparent;
             border-radius: none!important;
-        }
-        .ss-slider-navigation-right:hover, .ss-slider-navigation-right:hover svg {
-            transform: rotate(360deg);
-            cursor: pointer;
-        }
-        .ss-slider-navigation-left:hover, .ss-slider-navigation-left:hover svg {
-            transform: rotate(-360deg);
-            cursor: pointer;
         }
     /*FIN SLIDER ULTIAMS PELICULAS*/
 

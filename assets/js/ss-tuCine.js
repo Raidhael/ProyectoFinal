@@ -4,7 +4,9 @@ $( function () {
 
     $(window).resize(controlaEventos);
    
+    ss_slider_peliculas_active();
 
+    ss_$GET();
 });
 
 /*FUNCIONES*/ 
@@ -30,11 +32,10 @@ function controlaEventos () {
   
 }
 function ss_navegationBar_active (){
-    $('.ss-navBar ul li a').click( function (e){
-        e.preventDefault();
-        $('li').removeClass('ss-navBar-active');
-        $(this).parent().addClass('ss-navBar-active');
-    })
+        var ruta = window.location.pathname;
+            ruta = ruta.split('/')[1];
+            ruta = ruta.split('.')[0];
+            $('#ss-navBar-'+ruta).addClass('ss-navBar-active');
 }
 function ss_mobile_navigation() {
         //FUNCION DE NAVEGACION NAVBAR + CONTROL DE EVENTO
@@ -68,7 +69,6 @@ function ss_mobile_navigation_heigth(){
             if ($(window).scrollTop()){
                 if (scroll >150) $('.ss-navBar').css({'top':'0', 'heigth':'100vh'});
             }else {
-                console.log(scroll);
                 if (scroll < 300) $('.ss-navBar').css('top','5px');
             }
         });
@@ -78,4 +78,109 @@ function ss_mobile_navigation_heigth(){
             else $('.ss-navBar').removeClass('ss-navBar-movimiento');
         });
     }
+}
+
+
+/*Funciones slider ultimas peliculas*/
+
+
+function ss_slider_peliculas_active () {
+    $('.ss-slider-navigation-right').click( function (){
+        $('.ss-slider-navigation-right svg').toggleClass('ss-rotacion-slider-nav');
+        var id = $('.ss-img-slider').attr('id');
+        
+        $.ajax({
+            url: './includes/ajax/sliderPeliculas.ajax.php',
+            type: 'post',
+            dataType:'json',
+            data: {'id':id, 'action':'next'},
+            beforeSend : function (){
+                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-in').addClass('ss-fade-out');
+            },
+            success: function (data){
+               $('figure.ss-img-slider').attr('id',data['id_pelicula']);
+               $('figure.ss-img-slider img').attr('src', data['img_pelicula']).attr('alt',data['titulo']);
+               $('div.ss-item-titulo h4').html(data['titulo']);
+               $('div.ss-item-specs h5').html(data['tipo']);
+               $('div.ss-item-duracion h5').html(data['duracion']+'min');
+               $('div.ss-item-sipnopsis').html(data['sipnopsis']);
+
+            },
+            complete: function () {
+                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-out').addClass('ss-fade-in');
+            }
+        });
+    });
+
+    $('.ss-slider-navigation-left').click( function (){
+        $('.ss-slider-navigation-left svg').toggleClass('ss-rotacion-slider-nav');
+        var id = $('.ss-img-slider').attr('id');
+        $.ajax({
+            url: './includes/ajax/sliderPeliculas.ajax.php',
+            type: 'post',
+            dataType:'json',
+            data: {'id':id, 'action':'prev'},
+            beforeSend : function (){
+                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-in').addClass('ss-fade-out');
+            },
+            success: function (data){
+               $('figure.ss-img-slider').attr('id',data['id_pelicula']);
+               $('figure.ss-img-slider img').attr('src', data['img_pelicula']).attr('alt',data['titulo']);
+               $('div.ss-item-titulo h4').html(data['titulo']);
+               $('div.ss-item-specs h5').html(data['tipo']);
+               $('div.ss-item-duracion h5').html(data['duracion']+'min');
+               $('div.ss-item-sipnopsis').html(data['sipnopsis']);
+
+            },
+            complete: function () {
+                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-out').addClass('ss-fade-in');
+            }
+        });
+    });
+}
+
+
+/*FIN funciones slider ultimas peliculas*/
+
+
+/*$GET FUNCIONES*/
+function ss_varsOnUrl(){
+    var variables = location.search.replace('?', '').split('&');
+    if (variables[0] != ""){
+        valores = [];
+        variables.forEach(function (element){
+        texto = element.split('=');
+        valores[texto[0]] = texto[1];
+        })
+    }else{
+        valores = [0];
+    }
+        return valores;
+}
+
+
+function ss_$GET(){
+    var $GET = ss_varsOnUrl();        
+    if ($GET.length != 1){
+        if ($GET['id'].length){
+            ss_img_popUp($GET['id']);
+        }
+    }
+
+}
+
+function ss_img_popUp(id){
+    $.ajax({
+        url: './includes/ajax/popUpCartelera.ajax.php',
+        type: 'post',
+        dataType:'json',
+        data: {'id':id},
+        success: function (data){
+
+
+        },
+        complete: function () {
+            $('#pelicula').modal('show');
+        }
+    });
 }
