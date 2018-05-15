@@ -21,28 +21,9 @@ require_once './includes/conexiones/conexion-global.php';
     <main class="ss-main-container">
         <div class="container-fluid">
             <section>
-                <article class="ss-grid-cartelera">
+                <article class="ss-grid-cartelera-main">
                 <!-- GRID FORMATEADO PARA CABECERA JUNTO A DOS FILAS DE 3 ELEMENTOS -->
-                    <h2 class="ss-header-item">Cartelera</h2>
-
-                    <?php 
-                        $sql = 'SELECT id_pelicula , titulo , img_pelicula FROM pelicula  ORDER BY id_pelicula DESC LIMIT 6';
-                        $resultado = $conexion->query($sql);
-                        while (($peliculas =$resultado->fetch(PDO::FETCH_ASSOC)) != null ){
-                        echo  '<div class="ss-grid-cartelera-item">
-                                    <a href="#pelicula" data-toggle="modal" data-target="#pelicula">
-                                        <figure id ="'.$peliculas['id_pelicula'].'">    
-                                            <img  class="img-responsive" src="'.$peliculas['img_pelicula'].'" alt="'.$peliculas['titulo'].'">    
-                                            <figcaption><h5 class="ss-cartelera-titulo">'.$peliculas['titulo'].'</h5></figcaption>
-                                        </figure>
-                                    </a>
-                                </div>';
-                        }
-                        
                     
-                    ?>
-
-                    <!--TODO:: REPETIR ESTE ELEMENTO 6 VECES -->
                     
                 </article>
             </section>

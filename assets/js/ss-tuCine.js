@@ -160,11 +160,30 @@ function ss_varsOnUrl(){
 
 
 function ss_$GET(){
-    var $GET = ss_varsOnUrl();        
+    var $GET = ss_varsOnUrl();
+    pag = 1;
+    device = 0;
+    if (window.matchMedia('(min-width: 1080px)').matches) device = 1;        
     if ($GET.length != 1){
-        if ($GET['id'].length){
-            ss_img_popUp($GET['id']);
+
+        if ($GET['pag'].length){
+            pag = $GET['pag'];
         }
+        $.ajax({
+            url: './includes/ajax/cartelera.ajax.php',
+            type: 'post',
+            data: {'pag':pag, 'device':device},
+            success: function (data){
+                $('.ss-grid-cartelera-main').html(data);
+    
+            },
+            complete: function () {
+                alert('hi');
+            },
+            error: function () {
+                $('ss-grid-cartelera-main').append('<h4> ¡Ups! Ha ocurrido un error. Porfavor regargue la pagina en en unos mintuos, si el error persiste, contacte con nosotros.</h4>')
+            }
+        });
     }
 
 }
