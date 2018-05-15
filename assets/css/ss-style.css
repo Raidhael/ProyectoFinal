@@ -187,7 +187,7 @@ header h1 {
     height: auto;
     top: 0;
     left:0;
-    
+    object-fit: cover;
     margin : 0;
 }
 
@@ -354,12 +354,36 @@ header h1 {
 /*Cartelera*/
     .ss-grid-cartelera{
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 10% repeat(6,1fr);
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: 10% repeat(2,1fr);
     }
-    
-    .ss-grid-cartelera-item-mobile{
-        grid-column: 1;
+    .ss-cartelera-paginacion , .ss-cartelera-paginacion a{
+        
+        font-size: 18px;
+        text-align: center;
+        width: 100vw;
+        letter-spacing: 0.3em;
+        color:rgb(35, 168, 128);
+        font-weight: bold;
+    }
+    .ss-cartelera-paginacion .ss-pag-actual {
+        color:black!important;
+        font-size: 21px;
+    }
+
+    .ss-grid-cartelera-item-mobile:nth-child(odd){
+        
+        grid-row:2;
+    }
+    .ss-grid-cartelera-item-mobile:nth-child(even){
+        grid-row:3;
+    }
+
+    .ss-grid-cartelera-item-mobile figure img {
+        padding:1em;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 /*Fin cartelera*/
 /*Ultima promocion*/
@@ -395,10 +419,11 @@ header h1 {
         position: relative;
         display: inline-block;
         width: 7vw;
-        height: 10vh;
+        height: 40px;
         min-height: 94.841px;
         top: 0;
         left:0;
+        object-fit: cover!important;
         
         border-radius: 20%;
         margin : 0 1rem 0 0;

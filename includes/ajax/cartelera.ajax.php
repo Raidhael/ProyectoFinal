@@ -22,6 +22,7 @@
                 $resultado = $conexion->query('SELECT id_pelicula , titulo , img_pelicula FROM pelicula  ORDER BY id_pelicula DESC LIMIT '.$pag.' ,4;');
                 
                 //Se imprime la estructura html con los resultados
+                echo '<article class="ss-grid-cartelera">';
                 echo '<h2 class="ss-header-item">Cartelera</h2>';
                 while (($peliculas = $resultado->fetch(PDO::FETCH_ASSOC)) != null ){
                 echo  '<div class="ss-grid-cartelera-item">
@@ -33,11 +34,13 @@
                             </a>
                         </div>';
                 }
+                echo '</article>';
                 //Se hace la paginacion
                 if ($totalPaginas > 1){
                     echo '<div  class="ss-cartelera-paginacion">';
                     for ($i = 0 ; $i < $totalPaginas; $i++){
-                        echo '<a href="#">'.($i+1).'</a>';
+                        if ($i == $_POST['pag']) echo '<span class="ss-pag-actual">'.($i+1).'</span>';
+                        else echo '<a href="#">'.($i+1).'</a>';
                     }
                     echo '</div>';
                 }
@@ -53,6 +56,7 @@
                     $resultado = $conexion->query('SELECT id_pelicula , titulo , img_pelicula FROM pelicula  ORDER BY id_pelicula DESC LIMIT '.$pag.' ,6;');
                     
                     //Se imprime la estructura html con los resultados
+                    echo '<article class="ss-grid-cartelera">';
                     echo '<h2 class="ss-header-item">Cartelera</h2>';
                     while (($peliculas = $resultado->fetch(PDO::FETCH_ASSOC)) != null ){
                     echo  '<div class="ss-grid-cartelera-item">
@@ -64,6 +68,7 @@
                                 </a>
                             </div>';
                     }
+                    echo '</article>';
     
                     //Se hace la paginacion
                     if ($totalPaginas > 1){

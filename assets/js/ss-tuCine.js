@@ -13,19 +13,19 @@ $( function () {
 /*control de eventos*/
 
 function controlaEventos () {
- 
     ss_navegationBar_active();
     ss_mobile_navigation_heigth();
     /* Eventos resolucion 1080 */
     if (window.matchMedia('(max-width: 1080px)').matches){
+        
         ss_mobile_navigation();
          if ($(window).scrollTop()!=0) $('.ss-navigation').parent().addClass('ss-navBar-movimiento');
 
-         $('.ss-grid-cartelera *:not(:first-child)').removeClass('ss-grid-cartelera-item').addClass('ss-grid-cartelera-item-mobile');
+         $('.ss-grid-cartelera *:not(:first-child):not(:last-child)').removeClass('ss-grid-cartelera-item').addClass('ss-grid-cartelera-item-mobile');
     }
     else {
-        //ss_remove_mobile_navigation()
-        $('.ss-grid-cartelera *:not(:first-child)').removeClass('ss-grid-cartelera-item-mobile').addClass('ss-grid-cartelera-item');
+        
+        $('.ss-grid-cartelera *:not(:first-child):not(:last-child)').removeClass('ss-grid-cartelera-item-mobile').addClass('ss-grid-cartelera-item');
     };
 
     /*Se añaade evento de movimiento*/
@@ -48,7 +48,7 @@ function ss_mobile_navigation() {
                 
                 $(this).toggleClass('ss-navBar-animation');
                 $('.ss-navBar ul').toggleClass('ss-navBar-oculto');
-                $('.ss-navBar >ul li').toggleClass('ss-navBar-contenido-oculto').delay(1000);
+                $('.ss-navBar >ul li').toggleClass('ss-navBar-contenido-oculto').delay(500);
             })
         }
 }
@@ -144,49 +144,26 @@ function ss_slider_peliculas_active () {
 
 
 /*$GET FUNCIONES*/
-function ss_varsOnUrl(){
-    var variables = location.search.replace('?', '').split('&');
-    if (variables[0] != ""){
-        valores = [];
-        variables.forEach(function (element){
-        texto = element.split('=');
-        valores[texto[0]] = texto[1];
-        })
-    }else{
-        valores = [0];
-    }
-        return valores;
-}
-
-
 function ss_$GET(){
-    var $GET = ss_varsOnUrl();
-    pag = 1;
-    device = 0;
-    if (window.matchMedia('(min-width: 1080px)').matches) device = 1;        
-    if ($GET.length != 1){
-
-        if ($GET['pag'].length){
-            pag = $GET['pag'];
-        }
+        var pag = 0;
+        if (window.matchMedia('(max-width: 1080px)').matches) var device = 0;
+        else var device = 1;
         $.ajax({
             url: './includes/ajax/cartelera.ajax.php',
             type: 'post',
             data: {'pag':pag, 'device':device},
             success: function (data){
-                $('.ss-grid-cartelera-main').html(data);
+                $('#contenido').html(data);
     
             },
             complete: function () {
-                alert('hi');
+                
             },
             error: function () {
-                $('ss-grid-cartelera-main').append('<h4> ¡Ups! Ha ocurrido un error. Porfavor regargue la pagina en en unos mintuos, si el error persiste, contacte con nosotros.</h4>')
+                $('ss-grid-cartelera').append('<h4> ¡Ups! Ha ocurrido un error. Porfavor regargue la pagina en en unos mintuos, si el error persiste, contacte con nosotros.</h4>')
             }
         });
     }
-
-}
 
 function ss_img_popUp(id){
     $.ajax({

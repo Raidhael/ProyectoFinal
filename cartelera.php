@@ -1,5 +1,6 @@
 <?php
 require_once './includes/conexiones/conexion-global.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +21,8 @@ require_once './includes/conexiones/conexion-global.php';
 
     <main class="ss-main-container">
         <div class="container-fluid">
-            <section>
-                <article class="ss-grid-cartelera-main">
-                <!-- GRID FORMATEADO PARA CABECERA JUNTO A DOS FILAS DE 3 ELEMENTOS -->
-                    
-                    
-                </article>
+            <section id="contenido">
+
             </section>
         </div>
     </main>
@@ -47,7 +44,14 @@ require_once './includes/conexiones/conexion-global.php';
         
         </div>
   </div>
-    
+    <?php               
+        if (isset($_GET['id']) && $_GET['id'] != null && is_numeric($_GET['id'])){
+            echo '<input type="hidden" name="id" id="id" value="'.$_GET['id'].'">';
+        }
+        if (isset($_GET['pag']) && $_GET['pag'] != null && is_numeric($_GET['pag'])){
+            echo '<input type="hidden" name="pag" id="pag" value="'.$_GET['pag'].'">';
+        }
+    ?>
     <script src="/assets/js/jquery.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/ss-tuCine.js"></script>
