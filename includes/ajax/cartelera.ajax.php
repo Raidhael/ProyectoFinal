@@ -14,8 +14,7 @@
                 //Si es 0 significa que es movil por lo tanto se muestran  4 resultados
 
                 //Calculo para la paginacion
-                if ($pag == 1) $pag = 0;
-                else $pag = $pag * 4;
+                $pag = $pag * 4;
                 if ( $numPeliculas%4 != 0 ) $totalPaginas = floor($numPeliculas / 4 + 1);
                 else $totalPaginas = $numPeliculas / 4;
                 //Consulta SQL
@@ -48,8 +47,7 @@
                      //Si es 1 significa que es escritorio por lo tanto se muestran  6 resultados
 
                     //Calculo para la paginacion
-                    if ($pag == 1) $pag = 0;
-                    else $pag = $pag * 6;
+                    $pag = $pag * 6;
                     if ( $numPeliculas%6 != 0 ) $totalPaginas = floor($numPeliculas / 6 + 1);
                     else $totalPaginas = $numPeliculas / 6;
                     //Consulta SQL

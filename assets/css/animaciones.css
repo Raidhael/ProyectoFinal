@@ -1,0 +1,100 @@
+/*ANIMACION NAVBAR MOBILE*/
+.ss-navigation span{
+    display: block;
+    background-color: #fff;
+    height: 4px;
+    width: 30px;
+    display: block;
+    margin-top: 5px;
+    border-radius: 10px;
+    transition: .8s ease;
+}
+.ss-navBar-animation span:first-child{
+    transform: rotate(400deg) translate(0,12px);
+    background-color: hsl(123, 84%, 65%);
+    box-shadow:0px  0px 20px 2px rgb(161, 243, 136);
+    
+}
+.ss-navBar-animation span:last-child{
+    transform: rotate(-400deg) translate(0,-12px);
+    background-color: rgb(255, 0, 0);
+    box-shadow:0px 0px 20px 2px rgb(252, 91, 91); 
+    
+}
+.ss-navBar-animation span:nth-child(2){
+    -ms-transform: scale(0,0); 
+    -webkit-transform: scale(0,0); 
+    transform: scale(0,0); 
+}
+.ss-navBar-oculto {
+    opacity: 1!important;
+    margin-top:10px;
+    height: 100px!important;
+    z-index: 500;
+    visibility: visible!important;
+}
+.ss-navBar-contenido-oculto{
+    opacity: 1!important;
+    visibility: visible!important;
+    z-index:500;
+}
+
+.ss-navBar-movimiento {
+    opacity: 0.4!important;
+}
+/*FIN DE ANIMACION NAVBAR MOBILE*/
+/* Animaciones SLIDER*/
+@-webkit-keyframes ss-parpadeo {
+    0%   {stroke-width: 1;}
+    25%  {stroke-width: 25;}
+    50%  {stroke-width: 1;}
+    75%  {stroke-width: 25;}
+    100% {stroke-width: 1;}
+
+}
+
+/* Standard syntax */
+@keyframes ss-parpadeo {
+    0%   {stroke-width: 1;}
+    25%  {stroke-width: 25;}
+    50%  {stroke-width: 1;}
+    75%  {stroke-width: 25;}
+    100% {stroke-width: 1;}
+}
+
+ /*Animaciones carousel*/
+ .ss-fade-in {
+	opacity: 1;
+	animation-name: ss-fade-in;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.ss-fade-out {
+	opacity: 0;
+	animation-name: ss-fade-out;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-duration: 1s;
+}
+@keyframes ss-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes ss-fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+/*FIN DE ANIMACIONES SLIDER*/

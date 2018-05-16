@@ -6,7 +6,6 @@ $( function () {
    
     ss_slider_peliculas_active();
 
-    ss_$GET();
 });
 
 /*FUNCIONES*/ 
@@ -21,16 +20,11 @@ function controlaEventos () {
         ss_mobile_navigation();
          if ($(window).scrollTop()!=0) $('.ss-navigation').parent().addClass('ss-navBar-movimiento');
 
-         $('.ss-grid-cartelera *:not(:first-child):not(:last-child)').removeClass('ss-grid-cartelera-item').addClass('ss-grid-cartelera-item-mobile');
+         
     }
-    else {
-        
-        $('.ss-grid-cartelera *:not(:first-child):not(:last-child)').removeClass('ss-grid-cartelera-item-mobile').addClass('ss-grid-cartelera-item');
     };
 
     /*Se añaade evento de movimiento*/
-  
-}
 function ss_navegationBar_active (){
         var ruta = window.location.pathname;
             ruta = ruta.split('/')[1];
@@ -142,41 +136,3 @@ function ss_slider_peliculas_active () {
 
 /*FIN funciones slider ultimas peliculas*/
 
-
-/*$GET FUNCIONES*/
-function ss_$GET(){
-        var pag = 0;
-        if (window.matchMedia('(max-width: 1080px)').matches) var device = 0;
-        else var device = 1;
-        $.ajax({
-            url: './includes/ajax/cartelera.ajax.php',
-            type: 'post',
-            data: {'pag':pag, 'device':device},
-            success: function (data){
-                $('#contenido').html(data);
-    
-            },
-            complete: function () {
-                
-            },
-            error: function () {
-                $('ss-grid-cartelera').append('<h4> ¡Ups! Ha ocurrido un error. Porfavor regargue la pagina en en unos mintuos, si el error persiste, contacte con nosotros.</h4>')
-            }
-        });
-    }
-
-function ss_img_popUp(id){
-    $.ajax({
-        url: './includes/ajax/popUpCartelera.ajax.php',
-        type: 'post',
-        dataType:'json',
-        data: {'id':id},
-        success: function (data){
-
-
-        },
-        complete: function () {
-            $('#pelicula').modal('show');
-        }
-    });
-}

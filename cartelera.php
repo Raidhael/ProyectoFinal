@@ -54,6 +54,7 @@ require_once './includes/conexiones/conexion-global.php';
     ?>
     <script src="/assets/js/jquery.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
+    <script src="/assets/js/ss-cartelera.js"></script>
     <script src="/assets/js/ss-tuCine.js"></script>
 </body>
 </html>
