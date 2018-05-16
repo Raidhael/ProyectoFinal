@@ -29,6 +29,8 @@ function ss_navegationBar_active (){
         var ruta = window.location.pathname;
             ruta = ruta.split('/')[1];
             ruta = ruta.split('.')[0];
+            if (ruta == 'index') $('#ss-main-titulo').text('Inicio');
+            else $('#ss-main-titulo').text(ruta);
             $('#ss-navBar-'+ruta).addClass('ss-navBar-active');
 }
 function ss_mobile_navigation() {

@@ -37,10 +37,10 @@ require_once './includes/conexiones/conexion-global.php';
                         <figure id="'.$pelicula['id_pelicula'].'" class="ss-img-slider">
                             <a href="cartelera.php?id='.$pelicula['id_pelicula'].'"><img src="'.$pelicula['img_pelicula'].'" alt="'.$pelicula['titulo'].'"></a>
                         </figure>
-                        <div class="ss-item-slider ss-item-titulo">  <h4>'.$pelicula['titulo'].'</h4>     </div>                   
-                        <div class="ss-item-slider ss-item-specs">   <h5>'.$pelicula['tipo'].'</h5>       </div>
+                        <div class="ss-item-titulo">  <h4>'.$pelicula['titulo'].'</h4>     </div>                   
+                        <div class="ss-item-specs">   <h5>'.$pelicula['tipo'].'</h5>       </div>
                         <div class="ss-item-duracion">              <h5>'.$pelicula['duracion'].'min</h5>    </div>
-                        <div class="ss-item-slider ss-item-sipnopsis">
+                        <div class="ss-item-sipnopsis">
                             '.$pelicula['sipnopsis'].' 
                         </div>';
                     ?>

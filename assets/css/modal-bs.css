@@ -1,6 +1,59 @@
 /*MODALES BS*/
-.modal-content {
-    background:transparent!important;
-    color:white!important;
+.modal-dialog {
+    width: 100vw;
+    height: 70vh;
+    margin: 0;
+    padding: 1.5em;
+  }
+  .modal-body{
+      background: transparent;
+      height: 80vh;
+  }
+  .modal-content {
+    background: #111;
+    color:white;
+    height: auto;
+    min-height: 70vh;
+    border-radius: 0;
+  }
+  .modal-content h3{
+      width: 85%;
+      color:#fff;
+      text-align: center;
+      display: inline-block;
+  }
+  .modal-header{
+      background: #111;
+  }
+  .modal-header button {
+      width: 10%;
+      opacity: 1;
+  }
+  .modal-header button svg {
+    background:transparent;
+    opacity: 1;
+    stroke-width: 1;
+    stroke:#fff;
+    fill:#fff;
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    width: 10%;
+    display: inline-block;
+    transition: 2s;
+    
+  }
+  .modal-header button:hover svg {
+    color:red;
+    box-shadow: none;
+    text-shadow: none;
+    stroke-width: 2;
+    stroke:red;
+    transform: rotate(1440deg);
+    
 }
 /*FIN MODALES BS*/
+
+
+
