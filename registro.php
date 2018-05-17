@@ -15,29 +15,16 @@
 ?>
     <main class="ss-main-container">
         <div class="container-fluid">
-            <form action="#" method="post">
-                <ul id="myTabs" class="nav nav-pills nav-justified" role="tablist" data-tabs="tabs">
-                    <li class="active"><a href="#cuenta" data-toggle="tab">Cuenta</a></li>
-                    <li><a href="#personal" data-toggle="tab">Personal</a></li>
-                </ul>
-                <div class="tab-content">
-                <div>
-                    <div role="tabpanel" class="tab-pane fade in active" id="cuenta">
-                        <div class="form-group">
-                            <label for="nickname">Nickname:</label>
-                            <input type="text" class="form-control" id="nickname" name="nickname">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="clave">Clave:</label>
-                            <input type="password" class="form-control" id="clave" name="clave">
-
-                            <label for="fecha_nac">Fecha:</label>
-                            <input type="date" class="form-control" id="fecha_nac" name="fecha_nac">
-                        </div>
-                    </div>
+            <form action="#" id="ss-registro" method="post">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email">
                 </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
     </main>
