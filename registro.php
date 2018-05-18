@@ -19,23 +19,23 @@
         <form action="#" id="ss-registro" method="post">
             <div class="form-group">
                 <label for="nikname">Nomde de usuario:</label>
-                <input type="text" name="ninkname" class="form-control" id="nikname" placeholder="nikname">
+                <input type="text" name="ninkname" class="form-control" id="nikname" placeholder="nikname" required>
             </div>
             <div class="form-group">
                 <label for="pwd">Clave:</label>
-                <input type="password" class="form-control" name="pass" id="pwd" placeholder="clave">
+                <input type="password" class="form-control" name="pass" id="pwd" placeholder="clave" required>
             </div>
             <div class="form-group">
                 <label for="dni">DNI:</label>
-                <input type="text" class="form-control" name="dni" id="dni" placeholder="11111111-R">
+                <input type="text" class="form-control" name="dni" id="dni" placeholder="11111111-R" required>
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre">
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required>
             </div>
             <div class="form-group">
                 <label for="ape_1">1º Apellido:</label>
-                <input type="text" class="form-control"  name="ape_1" id="ape_1" placeholder="Primer apellido">
+                <input type="text" class="form-control"  name="ape_1" id="ape_1" placeholder="Primer apellido" required>
             </div>
             <div class="form-group">
                 <label for="ape_2">2º Apellido:</label>
@@ -43,11 +43,11 @@
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="salt@example.com">
+                <input type="email" class="form-control" name="email" id="email" placeholder="salt@example.com" required>
             </div>
             <div class="form-group">
                 <label for="date">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" name="fecha_nac" id="date">
+                <input type="date" class="form-control" name="fecha_nac" id="date" required>
             </div>
             <br>
                 <input type="submit" value="Registrarse" class="btn btn-info pull-right">
