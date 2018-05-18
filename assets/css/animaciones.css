@@ -12,7 +12,7 @@
 .ss-navBar-animation span:first-child{
     transform: rotate(400deg) translate(0,12px);
     background-color: hsl(123, 84%, 65%);
-    box-shadow:0px  0px 20px 2px rgb(161, 243, 136);
+    box-shadow:0px  0px 20px 2px rgb(243, 136, 136);
     
 }
 .ss-navBar-animation span:last-child{

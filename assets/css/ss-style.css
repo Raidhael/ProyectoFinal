@@ -3,7 +3,6 @@
 @import url('config-global.css');
 @import url('main-navBar.css');
 @import url('modal-bs.css');
-@import url('registro.css');
 
 /*FIN DE NAVEGACION*/
 
@@ -17,7 +16,7 @@ header{
     width: 100%;
     height: 13vh;
     z-index: 10;
-    color:rgba(13, 50, 117, 0.863);
+    color:rgba(0, 0, 0, 0.863);
 
     letter-spacing: 0.5rem;
     
@@ -32,7 +31,7 @@ header h1 {
     font-size: 2rem;
     font-weight: 700;
     margin-left: 1rem;
-    border-bottom: 4px solid rgb(14, 86, 114);
+    border-bottom: 4px solid rgb(0, 0, 0);
     width: 80%;
 
 }
@@ -122,7 +121,7 @@ header h1 {
     padding: 5vh;
 }
 .ss-slider-new-navigation span svg{
-    background:radial-gradient(ellipse at center, rgb(14, 178, 243) 0%,rgba(26, 125, 158, 0.863) 100%);
+    background:radial-gradient(ellipse at center, rgb(110, 0, 0) 0%,rgba(0, 0, 0, 0.863) 100%);
     margin: 0;
     stroke: rgba(253, 255, 255, 0.616);
     fill: rgb(0, 0, 0);
@@ -174,7 +173,7 @@ header h1 {
         text-align: center;
         width: 100%;
         letter-spacing: 0.3em;
-        color:rgb(35, 168, 128);
+        color:rgb(119, 8, 0);
         font-weight: bold;
     }
     .ss-cartelera-paginacion .ss-pag-actual {
@@ -196,8 +195,8 @@ header h1 {
         width: 17px;
         height: 17px;
         animation: ss-parpadeo 5s infinite;
-        stroke: rgba(89, 90, 90, 0.747);
-        fill: rgb(109, 250, 163);
+        stroke: rgba(245, 3, 3, 0.747);
+        fill: rgb(202, 0, 0);
         transition: 1s;
     }
 /*Fin cartelera*/
@@ -283,11 +282,13 @@ header h1 {
     }
     /*HEADER*/
     .ss-logo-cine, .ss-logo-cine img{
+        padding: 0;
         position: relative;
         display: inline-block;
         width: 5vw;
         padding: 5px;
-        min-height: 94.841px;
+        min-width: 80px;
+        min-height: 90px;
         top: 0;
         left:0;
         object-fit: cover!important;
@@ -302,10 +303,14 @@ header h1 {
         left: 0;
         margin:0;
         width: 100%;
-        height: 130px;
-        background: #fff;
-        color:rgb(3, 65, 122);
+        height: 94px;
+        padding: 0;
+        background:rgb(0, 0, 0);
+        color:rgb(143, 0, 0);
         z-index: 400;
+    }
+    header h1{
+        border-bottom: 4px solid rgb(143, 0, 0);
     }
     .ss-logo-cine-mobile, .ss-logo-cine-mobile * {
         display:none;
@@ -391,7 +396,7 @@ header h1 {
             width: 25px;
             height: 25px;
             position: relative;
-            stroke:rgb(134, 243, 219);
+            stroke:rgb(143, 7, 2);
             right: -2px;
             top:-4px;
             stroke-width: 1;

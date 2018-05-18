@@ -1,0 +1,70 @@
+html{
+    background: url(../images/JPG/1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+form ,main , .container-fluid, form *, body{
+    background: #fff;    
+}
+form{
+    position: relative;
+    width: 90vw;
+    background: #fff;
+    height: 100%;
+}
+label {
+    font-size: 0.8em;
+}
+span[id*="alerta-"]{
+    color:red;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+#ss-registro input:not(input[type='submit']) {
+    border:none;
+    
+    border-bottom: 1px solid black;
+    transition: 1s;
+    background: #fff;
+    box-shadow: none;
+}
+.has-error{
+    border:none;   
+    border-bottom: 2px solid red!important;
+    color:red;
+}
+.is-correct {
+    border:none;   
+    border-bottom: 2px solid rgb(72, 255, 0)!important;
+}
+@media only screen and (min-width: 1080px) {
+    html{
+        background: url(../images/JPG/1.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    form ,main , .container-fluid, form *,  body{
+        background: transparent;    
+    }
+    form{
+        position: relative;
+        width: 25vw!important;
+        top:9vh;
+        left: 30%;
+        background: #fff;
+        height: auto!important;
+        padding-left:0.5em;
+        padding-right:0.5em;
+
+        border-radius: 10px;
+    }
+    label {
+        font-size: 0.8em;
+    }
+
+}
