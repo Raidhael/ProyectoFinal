@@ -5,11 +5,8 @@ envioFormulario();
 
 
 function validaFormulario(){
-  var valida =  $('#ss-registro .form-group input').change(function () {
-        var flag = true;
-
-        var id = $(this).attr('id');
-        
+  $('#ss-registro .form-group input').change(function () {
+        var id = $(this).attr('id');    
         if (id == 'nikname') {
 
             pattern = /^[\w\s]{4,16}$/;
@@ -19,7 +16,7 @@ function validaFormulario(){
                 var alerta = '<span id="alerta-'+id+'"> Nikname incorrecto, porfavor introduce un nick valido.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 $(this).removeClass('has-error');
                 $(this).addClass('is-correct');
@@ -34,7 +31,7 @@ function validaFormulario(){
                 var alerta = '<span id="alerta-'+id+'"> Clave incorrecta, porfavor introduce una clave valida.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 $(this).removeClass('has-error');
                 $(this).addClass('is-correct');
@@ -42,14 +39,14 @@ function validaFormulario(){
             };
         }else if (id == 'dni') {
             var val = $(this).val();
-            pattern = /[\d]{8}[A-Z]{1}/;
+            pattern = /\d{8}[A-Z]{1}/;
             if (!val.match(pattern)){
                 $(this).removeClass('is-correct');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                 var alerta = '<span id="alerta-'+id+'"> DNI incorrecto, porfavor introduce un DNI valido.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 letraDNI = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
                 var dni = $(this).val();
@@ -71,7 +68,7 @@ function validaFormulario(){
                         if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                         var alerta = '<span id="alerta-'+id+'"> DNI incorrecto, porfavor introduce un DNI valido.</span>';
                         $(this).parent().append(alerta);
-                        flag = false;
+                        
                    }
 
                 }else{
@@ -80,7 +77,7 @@ function validaFormulario(){
                     if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                     var alerta = '<span id="alerta-'+id+'"> DNI incorrecto, porfavor introduce un DNI valido.</span>';
                     $(this).parent().append(alerta);
-                    flag = false;
+                    
                 };
 
                 
@@ -94,7 +91,7 @@ function validaFormulario(){
                 var alerta = '<span id="alerta-'+id+'"> Nombre incorrecto, porfavor introduce un nombre valido.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 $(this).removeClass('has-error');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
@@ -109,7 +106,7 @@ function validaFormulario(){
                 var alerta = '<span id="alerta-'+id+'"> Apellido incorrecto, porfavor introduce un apellido valido.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 $(this).removeClass('has-error');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
@@ -124,7 +121,7 @@ function validaFormulario(){
                 var alerta = '<span id="alerta-'+id+'"> Apellido incorrecto, porfavor introduce un apellido valido.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 $(this).removeClass('has-error');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
@@ -132,14 +129,14 @@ function validaFormulario(){
             };
         }else if (id == 'email') {
             var val = $(this).val();
-            pattern = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-            if (!val.match(pattern) && !campoUnico(id,val)){
+            pattern = /^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
+            if (!val.match(pattern) || !campoUnico(id,val)){
                 $(this).removeClass('is-correct');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                 var alerta = '<span id="alerta-'+id+'"> Email incorrecto, porfavor introduce un Email valido.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
 
                 var correcto = campoUnico(id,val);
@@ -148,7 +145,7 @@ function validaFormulario(){
                     if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                     $(this).addClass('is-correct');
                 }else{
-                    flag = false;
+                    
                     $(this).removeClass('is-correct');
                     if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                     var alerta = '<span id="alerta-'+id+'"> Email incorrecto, porfavor introduce un Email valido.</span>';
@@ -169,17 +166,21 @@ function validaFormulario(){
                 var alerta = '<span id="alerta-'+id+'"> Fecha incorrecta, es necesario ser mayor de 7 años para registrarse.</span>';
                 $(this).parent().append(alerta);
                 $(this).addClass('has-error');
-                flag = false;
+                
             }else{
                 $(this).removeClass('has-error');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                 $(this).addClass('is-correct');
             };
         }
-        return flag;
+        
+        $('#TermConditions').click(function (){
+            if($(this).prop('checked')) $(this).val(1);
+            else $(this).val(0);
+        });
+        
     });
-
-    return valida;
+    
 }
 
 function campoUnico(id, val){
@@ -198,17 +199,44 @@ function campoUnico(id, val){
 
 
 function envioFormulario () {
-    $('#ss-registro').submit( function (e){
+  var $todoOk =  $('#ss-registro').submit( function (e){
         e.preventDefault();
-        var fomulario = $(this).serialize();
-        var $correcto =$.ajax({
-            url: 'includes/ajax/validaFormulario.ajax.php',
-            type: 'post',
-            dataType: 'json',
-            data: {formulario},
-            success: function (data){
-                return data;
-            }
-        });
+        var $validacion = true;
+        $('#ss-registro :input').each(function () {
+
+            $(this).trigger('change');
+        },
+        $('#ss-registro :input').each(function () {
+
+            if ($(this).hasClass('has-error'))  $validacion = false;
+        }));
+
+        if ($('#TermConditions').val() == 0) {
+            $('#TermConditions').next('span').css('color','red');
+        }
+        if ($validacion && $('#TermConditions').val() == 1){   
+            var nickname = $('#nickname').val();
+            var pwd = $('#pwd').val();
+            var dni = $('#dni').val();
+            var nombre = $('#nombre').val();
+            var ape_1 = $('#ape_1').val();
+            var ape_2 = $('#ape_2').val();
+            var email = $('#email').val();
+            var date = $('#date').val();
+            var $correcto =$.ajax({
+                url: 'includes/ajax/validaFormulario.ajax.php',
+                type: 'post',
+                dataType: 'text',
+                data: {'nickname':nickname, 'password':pwd,'dni':dni,'nombre':nombre, 'ape_1':ape_1, 'ape_2':ape_2,'email': email,
+                'fecha': date},
+                success: function (data){
+                    console.log('hecho');
+                    console.log(data);
+                },
+                error: function () {
+                    alert('No va');
+                }
+            });   
+        }
     });
 }
