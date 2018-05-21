@@ -1,34 +1,22 @@
 <?php
-    $alerta = '';
-    if (isset($_POST['email']) && $_POST['email'] != null && isset($_POST['clave']) && $_POST['clave'] != null) {
-        $bandera = true;
-        require_once '../conexiones/conexion-global.php';
-        $sql = $conexion->prepare ('SELECT * FROM usuario WHERE email like :email ');
-        $sql->bindParam(':email', $_POST['email']);
-       if ($existe = $sql->exectute()){
-            if ($existe->fetchColumn() > 0){
-                $existe = $existe->fetch(PDO::FETCH_ASSOC);
-                $hash = $existe['clave'];
-                $pass=$_POST['clave'];
-                if (password_verify($pass,$hash)){
-                    $tipo = $existe['tipo'];
-                    $email = $existe['email'];
-                }
+
+    $alerta = 0;
+    if (isset($_POST['email-login']) && $_POST['email-login'] != null && isset($_POST['pass']) && $_POST['pass'] != null) {
+        require_once './includes/conexiones/conexion-global.php';
+        $sql = $conexion->prepare ('SELECT count(*) FROM usuario WHERE email like :email ');
+        $sql->bindParam(':email', $_POST['email-login']);
+         $sql->execute();
+         $existe =$sql->fetch(PDO::FETCH_NUM)[0];
+        if ($existe > 0){
+            $existe = $existe->fetch(PDO::FETCH_ASSOC);
+            $hash = $existe['clave'];
+            $pass=$_POST['pass'];
+            if (password_verify($pass,$hash)){
+                $tipo = $existe['tipo'];
+                $email = $existe['email'];
             }
-       }else{
-           $bandera = false;
-           echo json_encode($bandera);
-       }
-    }else{
-        $bandera = false;
-        echo json_encode($bandera);
+        }   
     }
-    
-    
-    
-    
-
-
 ?>
 
 
@@ -63,17 +51,16 @@
                 <form action="#" id="ss-login" method="post">
                         <div class="form-group">
                             <label for="email-login">Nomde de usuario:</label>
-                            <input type="text" name="email-login" class="form-control" id="email-login" placeholder="email" >
-                            <span id="alerta-login"><?=$alerta?></span>
+                            <input type="text" name="email-login" class="form-control" id="email-login" placeholder="email" >                            
                         </div>
                         <div class="form-group">
                             <label for="clave-login">Clave:</label>
                             <input type="password" class="form-control" name="pass" id="clave-login" placeholder="clave" >
-                            <span id="alerta-login"><?=$alerta?></span>
-                        </div>
-                        
+                            
+                        </div>                
                             <a data-toggle="pill" href="#registro" id="login"> ¿No tienes cuenta ? Registrate!</a>
                             <input type="submit" value="Entrar" class="btn btn-info pull-right">
+                            <input type="hidden" value="<?=$alerta?>" id="ss-animation-control">
                     </form>
                 </div>
                 <div id="registro" class="tab-pane fade in">
