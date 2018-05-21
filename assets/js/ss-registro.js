@@ -7,15 +7,17 @@ $('a#login').click(function () {
     if ($('#ss-sesion').hasClass('active')) $('#ss-sesion').removeClass('active');
     $('#ss-registrate').addClass('active');
 });
+animationControl($('#ss-animation-control').val());
+
 });
 
 
 function validaFormulario(){
   $('#ss-registro .form-group input').change(function () {
         var id = $(this).attr('id');    
-        if (id == 'nikname') {
+        if (id == 'nickname') {
 
-            pattern = /^[\w\s]{4,16}$/;
+            pattern = /^[\w\s]{4,16}$/i;
             if (!$(this).val().match(pattern)){
                 $(this).removeClass('is-correct');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
@@ -45,8 +47,9 @@ function validaFormulario(){
             };
         }else if (id == 'dni') {
             var val = $(this).val();
-            pattern = /\d{8}[A-Z]{1}/;
+            var  pattern = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}$/i;
             if (!val.match(pattern)){
+                alert('No coincide');
                 $(this).removeClass('is-correct');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
                 var alerta = '<span id="alerta-'+id+'"> DNI incorrecto, porfavor introduce un DNI valido.</span>';
@@ -135,7 +138,7 @@ function validaFormulario(){
             };
         }else if (id == 'email') {
             var val = $(this).val();
-            pattern = /^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
+            pattern = /^[^0-9][a-zA-Z0-9_.]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
             if (!val.match(pattern) || !campoUnico(id,val)){
                 $(this).removeClass('is-correct');
                 if ($(this).parent().find('#alerta-'+id)) $('#alerta-'+id).remove();
@@ -232,7 +235,7 @@ function envioFormulario () {
             $.ajax({
                 url: 'includes/ajax/validaFormulario.ajax.php',
                 type: 'post',
-                dataType: 'json',
+                dataType: 'text',
                 data: {'nickname':nickname, 'password':pwd,'dni':dni,'nombre':nombre, 'ape_1':ape_1, 'ape_2':ape_2,'email': email,
                 'fecha': date},
                 success: function (data){
@@ -247,3 +250,10 @@ function envioFormulario () {
     });
 }
 
+function animationControl (val){
+    if (val > 0){
+        $('.ss-registro-wrapper').addClass('ss-login-error');
+        var $alerta = '<span class="alerta">¡Negative! Algún campo no coincide</span>';
+        $('#ss-login div.form-group').append($alerta);
+    }
+}

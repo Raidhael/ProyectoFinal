@@ -1,27 +1,35 @@
-
 <nav class="ss-navBar">
     <div class="ss-navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
     <ul>
         <li id="ss-navBar-index">
             <a href="/index.php">
                 <span class="ss-home-icon">
-                    <?php echo file_get_contents('./assets/images/SVG/013-cinema.svg');?>
+                    <?php echo file_get_contents('./assets/images/SVG/home.svg');?>
                 </span>
                         <span class="ss-texto-animado">INICIO</span> 
             </a>
         </li>
-        <li id="ss-navBar-registro">
-            <a href="/registro.php">
-                <span class="ss-profile-icon">
-                <?php echo file_get_contents('./assets/images/SVG/usuario.svg');?>
-                </span>
-                <span class="ss-texto-animado">REGISTRO</span> 
-            </a>
-        </li>
+        <?php
+        if (isset($_SESSION['email']) && $_SESSION['email'] != null){
+            echo '<li id="ss-navBar-perfil"><a href="/perfil.php">  
+                        <span class="ss-profile-icon">'.file_get_contents('./assets/images/SVG/usuario.svg').' </span>
+                        <span class="ss-texto-animado">PERFIL</span> 
+                        </a>
+                    </li>';
+        }else{
+            echo '<li id="ss-navBar-registro"><a href="/registro.php">  
+                    <span class="ss-profile-icon">'.file_get_contents('./assets/images/SVG/usuario.svg').' </span>
+                    <span class="ss-texto-animado">Inicio Sesion</span> 
+                    </a>
+                </li>';
+        }
+
+
+        ?>
         <li id="ss-navBar-cartelera">
         <a href="/cartelera.php">
             <span class="ss-movies-icon">
@@ -46,6 +54,15 @@
                 <span class="ss-texto-animado">F.A.Q</span> 
             </a>
         </li>
+    <?php
+        if (isset($_SESSION['email']) && $_SESSION['email'] != null){
+            echo '<li id="ss-navBar-logout"><a href="/logout.php">  
+                        <span class="ss-logout-icon">'.file_get_contents('./assets/images/SVG/logout.svg').' </span>
+                        <span class="ss-texto-animado">SALIR</span> 
+                        </a>
+                    </li>';
+        }
+    ?>
     </ul>
     <div class="ss-logo-cine-mobile">
         <a href="/">

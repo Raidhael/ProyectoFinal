@@ -1,4 +1,5 @@
 <?php
+require_once './includes/sesiones/sesion.inc.php';
 require_once './includes/conexiones/conexion-global.php';
  if (isset($_GET['id']) && $_GET['id'] != null && is_numeric($_GET['id'])) $id = $_GET['id'];
  else $id='';

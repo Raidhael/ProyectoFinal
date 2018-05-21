@@ -1,15 +1,15 @@
 /* Navegacion*/
 .ss-navBar , .ss-navBar ul , .ss-navBar ul li{
-    background:rgb(0, 0, 0)!important;
+    background:rgb(0, 0, 0);
 }
 .ss-navBar{
     width: 100%;
     position: fixed;
-    height: auto;
+    height: 60px!important;
     top:0;
     opacity: 1;
     color:white;
-    z-index: 99999;
+    z-index: 500;
     max-height: 100px;
 }
 .ss-navBar >.ss-navigation {
@@ -54,33 +54,41 @@
     width: 40px;
     height: 50px;
     display: block;
+    background: transparent;
+    
 }
 /*ICONOS SVG*/
-.ss-home-icon svg, .ss-profile-icon svg , .ss-movies-icon svg, .ss-promotions-icon svg ,.ss-faq-icon svg{
-    stroke-width: 10;
+.ss-home-icon svg, .ss-profile-icon svg , .ss-movies-icon svg, .ss-promotions-icon svg ,.ss-faq-icon svg, .ss-logout-icon svg{
+    opacity: 1!important;
+    stroke-width: 15;
     width: 100%;
-    height: 60px;
+    height: 40px;
     transition: 0.3s;
-    fill: rgba(255, 255, 255, 0.678);
+    fill: rgb(255, 255, 255)!important;
 }
 .ss-navBar ul li span.ss-home-icon svg {
-    stroke: rgb(245, 193, 22);
+    stroke: rgb(0, 102, 255);
+    
     
 }
 .ss-navBar ul li span.ss-profile-icon svg {
     stroke: rgb(53, 235, 114);
-
+    
 }
 .ss-navBar ul li span.ss-movies-icon svg {
-    stroke: rgb(65, 65, 65);
+    stroke: rgb(255, 60, 0);
 
 }
 .ss-navBar ul li span.ss-promotions-icon svg {
-    stroke: rgb(182, 29, 196);
+    stroke: rgb(255, 0, 191);
 
 }
 .ss-navBar ul li span.ss-faq-icon svg {
     stroke: rgb(0, 217, 255);
+
+}
+.ss-navBar ul li span.ss-logout-icon svg {
+    stroke: rgb(255, 0, 0);
 
 }
 /*FIN DE ICONOS SVG*/
@@ -91,32 +99,35 @@
     display: none;
 }
 /* ICONOS NAVEGACION LATERAL*/
-.ss-home-icon svg, .ss-profile-icon svg , .ss-movies-icon svg, .ss-promotions-icon svg ,.ss-faq-icon svg{
+.ss-home-icon svg, .ss-profile-icon svg ,.ss-logout-icon svg, .ss-movies-icon svg, .ss-promotions-icon svg ,.ss-faq-icon svg{
     stroke:white!important;
-    stroke-width: 7;
     width: 100%!important;
     height: 40px!important;
     transition: 0.3s!important;
-    fill: rgba(255, 255, 255, 0.678)!important;
+    fill: rgba(0, 0, 0, 1);
 }
-.ss-navBar:hover ul li:not(.ss-navBar-active) span.ss-home-icon svg {
-    stroke: rgb(245, 193, 22)!important;
+.ss-navBar:hover ul li span.ss-home-icon svg , .ss-navBar-active  span.ss-home-icon svg{
+    stroke: rgb(0, 102, 255)!important;
     
 }
-.ss-navBar:hover ul li:not(.ss-navBar-active) span.ss-profile-icon svg {
+.ss-navBar:hover ul li span.ss-profile-icon svg , .ss-navBar-active span.ss-profile-icon svg{
     stroke: rgb(53, 235, 114)!important;
 
 }
-.ss-navBar:hover ul li:not(.ss-navBar-active) span.ss-movies-icon svg {
-    stroke: rgb(65, 65, 65)!important;
+.ss-navBar:hover ul li span.ss-movies-icon svg , .ss-navBar-active  span.ss-movies-icon svg{
+    stroke: rgb(255, 60, 0)!important;
 
 }
-.ss-navBar:hover ul li:not(.ss-navBar-active) span.ss-promotions-icon svg {
-    stroke: rgb(182, 29, 196)!important;
+.ss-navBar:hover ul li span.ss-promotions-icon svg , .ss-navBar-active  span.ss-promotions-icon svg{
+    stroke: rgb(255, 0, 191)!important;
 
 }
-.ss-navBar:hover ul li:not(.ss-navBar-active) span.ss-faq-icon svg {
-    stroke: rgb(56, 112, 233)!important;
+.ss-navBar:hover ul li span.ss-faq-icon svg , .ss-navBar-active  span.ss-faq-icon svg{
+    stroke: rgb(0, 217, 255)!important;
+
+}
+.ss-navBar:hover ul li span.ss-logout-icon svg , .ss-navBar-active  span.ss-logout-icon svg{
+    stroke: rgb(255, 0, 0)!important;
 
 }
 /* FIN DE ICONOS NAVEGACION LATERAL*/
@@ -163,14 +174,18 @@
     transition: 0.3s ease;
 
 }
-.ss-navBar-active,.ss-navBar-active span svg {
-    stroke: #111!important;
-    stroke-width: 7!important;
-    fill: #111!important;
-    color:#111!important;
+.ss-navBar-active{
+    
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    
+}
+.ss-navBar-active span svg, .ss-navBar-active span {    
+    color:rgb(204, 204, 204)!important;
     left: 0!important;
     font-weight: bold;
-    background-color: rgb(255, 255, 255)!important;
+    animation: ss-parpadeo 5s infinite;
+
 }
 .ss-navBar-active span , .ss-navBar-active a{
     left: 0!important;

@@ -10,15 +10,23 @@ if (isset($_POST)){
         else $bandera = false;
         
     }else $bandera=false;
+
+
+
+
+
     //VALIDACION DE NICKNAME
     if (isset($_POST['nickname']) && $_POST['nickname'] != null){
         $pattern =" /^[\w\s]{4,16}$/";
         if (preg_match($pattern , $_POST['nickname'])) $bandera=true;
         else $bandera = false;
     }else $bandera=false;
+
+
+
     //VALIDACION DE DNI
     if (isset($_POST['dni']) && $_POST['dni'] != null){
-        $pattern = "/[0-9]{8}[A-Z]{1}/";
+        $pattern = "/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}$/i";
         if (preg_match($pattern , $_POST['dni'])){
             $letraDNI = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
             $letra = substr($_POST['dni'], -1);
@@ -36,6 +44,9 @@ if (isset($_POST)){
             } else $bandera = false;
         }else  $bandera = false;
     }else  $bandera = false;
+
+
+
     //VALIDACION DEL PRIMER APELLIDO
     if (isset($_POST['ape_1']) && $_POST['ape_1'] != null){
         $pattern = "/^[a-z A-Z\s]{2,25}$/";
@@ -48,9 +59,14 @@ if (isset($_POST)){
         if (preg_match($pattern , $_POST['ape_2'])) $bandera=true;
         else $bandera = false;
     }else $ape_2 = '-';
+
+
+
+
+
     //VALIDACION DE EMAIL
     if (isset($_POST['email']) && $_POST['email'] != null){
-        $pattern = ' /^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/ ';
+        $pattern = ' /^[^0-9][a-zA-Z0-9_.]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/ ';
         if (preg_match($pattern, $_POST['email'])) {
             $sql = $conexion->prepare('SELECT count (*) FROM usuario WHERE email = :email;');
             $sql->bindParam(':email' , $_POST['email']);
@@ -61,6 +77,11 @@ if (isset($_POST)){
             else $bandera = false;
         }else  $bandera = false;    
     }else $bandera=false;
+
+
+
+
+
     //VALIDACION DE FECHA, SE VERIFICA QUE SEA MAYOR DE 7 AÑOS EL USUARIO
     if (isset($_POST['fecha']) && $_POST['fecha'] != null){
         $year = explode('-', $_POST['fecha'])[2];
@@ -76,8 +97,11 @@ if (isset($_POST)){
 
     }else $bandera = false;
 
+
+
     //EN CASO DE SER TRUE SE AÑADE EL USUARIO A LA BASE DE DATOS - REGISTRO COMPLETADO SIN NINGUNA FALLA
     if ($bandera){
+        echo 'Si que entra';
         $sql = $conexion->prepare("INSERT INTO usuario (nickname, clave, DNI , nombre, ape1, ape2 ,email , fecha_nac, tipo) VALUES(:nickname,:clave,:dni,:nombre,:ape_1 ,:ape_2,:email,:fecha,'usuario');");
         $sql->bindParam(':nickname', $_POST['nickname']);
         $sql->bindParam(':clave', $clave);

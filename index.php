@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once './includes/sesiones/sesion.inc.php';
 require_once './includes/conexiones/conexion-global.php';
 
 ?>

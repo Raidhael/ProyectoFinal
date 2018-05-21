@@ -2,20 +2,30 @@
 
     $alerta = 0;
     if (isset($_POST['email-login']) && $_POST['email-login'] != null && isset($_POST['pass']) && $_POST['pass'] != null) {
+        require_once './includes/sesiones/sesion.inc.php';
         require_once './includes/conexiones/conexion-global.php';
         $sql = $conexion->prepare ('SELECT count(*) FROM usuario WHERE email like :email ');
         $sql->bindParam(':email', $_POST['email-login']);
          $sql->execute();
          $existe =$sql->fetch(PDO::FETCH_NUM)[0];
         if ($existe > 0){
-            $existe = $existe->fetch(PDO::FETCH_ASSOC);
+            $sql = $conexion->prepare ('SELECT * FROM usuario WHERE email like :email ');
+            $sql->bindParam(':email', $_POST['email-login']);
+            $sql->execute();
+            $existe = $sql->fetch(PDO::FETCH_ASSOC);
             $hash = $existe['clave'];
             $pass=$_POST['pass'];
             if (password_verify($pass,$hash)){
-                $tipo = $existe['tipo'];
-                $email = $existe['email'];
+                $_SESSION['tipo'] = $existe['tipo'];
+                $_SESSION['email'] = $existe['email'];
+                echo '<h1> HOLA</h1>';
+                header('location: index.php');
+            }else{
+                $alerta = 1;
             }
-        }   
+        } else{
+            $alerta = 1;
+        }
     }
 ?>
 

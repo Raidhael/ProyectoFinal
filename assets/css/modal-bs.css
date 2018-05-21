@@ -1,16 +1,17 @@
 /*MODALES BS*/
 .modal-dialog {
+    z-index: 99999;
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
     margin: 0;
-    padding: 1.5em;
+    
   }
   .modal-body{
       background: transparent;
       height: 80vh;
   }
   .modal-content {
-    background: #111;
+    background: rgba(0, 0, 0, 0.493);
     color:white;
     height: auto;
     min-height: 70vh;
@@ -39,35 +40,37 @@
     width: 25px;
     height: 25px;
     font-weight: bold;
-    
+    z-index: inherit;
     display: inline-block;
     transition: 2s;
     
   }
-  .modal-header button:hover svg {
-    color:red;
-    box-shadow: none;
-    text-shadow: none;
-    stroke-width: 2;
-    stroke:rgb(255, 217, 0);
-    transform: rotate(1440deg);
-    
-}
+
 
 
 @media only screen and (min-width: 1080px){
+    .modal-header button:hover svg {
+        color: #fff;
+        box-shadow: none;
+        text-shadow: none;
+        stroke-width: 2;
+        stroke:rgb(7, 107, 90);
+        fill:white;
+        transform: rotate(360deg);
+        
+    }
     .modal-dialog {
-        width: 50vw;
-        height: 70vh;
+        width: 60vw;
+        height: 100vh;
         margin-left: 25%;
-        padding: 1.5em;
+        
+        
       }
       .modal-body{
           background: transparent;
           height: 70vh;
       }
       .modal-content {
-        background: #111;
         color:white;
         height: auto;
         min-height: 70vh;

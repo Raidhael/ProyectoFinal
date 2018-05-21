@@ -33,10 +33,10 @@ ul.nav-pills li.active a{
     background: #fff!important;
     box-shadow: none;
 }
-span[id*="alerta-"]{
+span[id*="alerta-"] , .alerta{
     color:red;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 
 
@@ -74,11 +74,40 @@ a {
         top:1vh;
         width: 45%;
         margin: auto;
-        
         background: #fff;
         -webkit-box-shadow: -1px 7px 54px -8px rgba(255,255,255,0.49);
         -moz-box-shadow: -1px 7px 54px -8px rgba(255,255,255,0.49);
         box-shadow: -1px 7px 54px -8px rgba(255,255,255,0.49);
+        transition:1s;
+        
+    }
+    .ss-login-error{
+        margin:auto;
+        animation-name: ss-bounce;
+        animation-iteration-count: 2;
+        animation-timing-function: ease-in;
+        animation-duration: 0.5s;
+        transition: 1s;
+    }
+
+    @keyframes ss-bounce {
+        0% {
+            transform: translateX(0px);
+        }
+        25% {
+            transform: translateX(-100px);
+        }
+        50%{
+            transform: translateX(0px);
+        }
+        75%{
+            transform: translateX(100px);
+        }
+        100%{
+            transform: translateX(0px);
+        }
+        
+
     }
     form{
         margin:15px; 
