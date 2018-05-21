@@ -1,6 +1,12 @@
 $(function () {
 validaFormulario();
 envioFormulario();
+
+
+$('a#login').click(function () {
+    if ($('#ss-sesion').hasClass('active')) $('#ss-sesion').removeClass('active');
+    $('#ss-registrate').addClass('active');
+});
 });
 
 
@@ -223,10 +229,10 @@ function envioFormulario () {
             var ape_2 = $('#ape_2').val();
             var email = $('#email').val();
             var date = $('#date').val();
-            var $correcto =$.ajax({
+            $.ajax({
                 url: 'includes/ajax/validaFormulario.ajax.php',
                 type: 'post',
-                dataType: 'text',
+                dataType: 'json',
                 data: {'nickname':nickname, 'password':pwd,'dni':dni,'nombre':nombre, 'ape_1':ape_1, 'ape_2':ape_2,'email': email,
                 'fecha': date},
                 success: function (data){
@@ -240,3 +246,4 @@ function envioFormulario () {
         }
     });
 }
+

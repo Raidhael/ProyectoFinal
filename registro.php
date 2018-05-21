@@ -1,3 +1,37 @@
+<?php
+    $alerta = '';
+    if (isset($_POST['email']) && $_POST['email'] != null && isset($_POST['clave']) && $_POST['clave'] != null) {
+        $bandera = true;
+        require_once '../conexiones/conexion-global.php';
+        $sql = $conexion->prepare ('SELECT * FROM usuario WHERE email like :email ');
+        $sql->bindParam(':email', $_POST['email']);
+       if ($existe = $sql->exectute()){
+            if ($existe->fetchColumn() > 0){
+                $existe = $existe->fetch(PDO::FETCH_ASSOC);
+                $hash = $existe['clave'];
+                $pass=$_POST['clave'];
+                if (password_verify($pass,$hash)){
+                    $tipo = $existe['tipo'];
+                    $email = $existe['email'];
+                }
+            }
+       }else{
+           $bandera = false;
+           echo json_encode($bandera);
+       }
+    }else{
+        $bandera = false;
+        echo json_encode($bandera);
+    }
+    
+    
+    
+    
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,48 +49,78 @@
      
 ?>
     <main class="ss-main-container">
-        <div class="container-fluid">
-        <form action="#" id="ss-registro" method="post">
-            <div class="form-group">
-                <label for="nickname">Nomde de usuario:</label>
-                <input type="text" name="ninkname" class="form-control" id="nickname" placeholder="nikname" >
-            </div>
-            <div class="form-group">
-                <label for="pwd">Clave:</label>
-                <input type="password" class="form-control" name="pass" id="pwd" placeholder="clave" >
-            </div>
-            <div class="form-group">
-                <label for="dni">DNI:</label>
-                <input type="text" class="form-control" name="dni" id="dni" placeholder="11111111-R" >
-            </div>
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" >
-            </div>
-            <div class="form-group">
-                <label for="ape_1">1º Apellido:</label>
-                <input type="text" class="form-control"  name="ape_1" id="ape_1" placeholder="Primer apellido" >
-            </div>
-            <div class="form-group">
-                <label for="ape_2">2º Apellido:</label>
-                <input type="text" class="form-control"  name="ape_2" id="ape_2" placeholder="Segundo apellido (opcional)">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="salt@example.com" >
-            </div>
-            <div class="form-group">
-                <label for="date">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" name="date" id="date" >
-            </div>
-            
-            <div class="form-group">
-            <input type="checkbox" name="TermConditions" id="TermConditions" value="0"> <span> Acepto los terminos y condiciones</span>
-            </div>
-                <input type="submit" value="Registrarse" class="btn btn-info pull-right">
-            </form>
-            
-        </div>
+        <section class="container">
+
+
+
+        <div class="ss-registro-wrapper">
+            <ul class="nav nav-pills nav-justified">
+                <li id="ss-sesion" class="active"><a data-toggle="pill" href="#login">Inicio Sesion</a></li>
+                <li id="ss-registrate"><a data-toggle="pill" href="#registro">Registro</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="login" class="tab-pane fade in active">
+                <form action="#" id="ss-login" method="post">
+                        <div class="form-group">
+                            <label for="email-login">Nomde de usuario:</label>
+                            <input type="text" name="email-login" class="form-control" id="email-login" placeholder="email" >
+                            <span id="alerta-login"><?=$alerta?></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="clave-login">Clave:</label>
+                            <input type="password" class="form-control" name="pass" id="clave-login" placeholder="clave" >
+                            <span id="alerta-login"><?=$alerta?></span>
+                        </div>
+                        
+                            <a data-toggle="pill" href="#registro" id="login"> ¿No tienes cuenta ? Registrate!</a>
+                            <input type="submit" value="Entrar" class="btn btn-info pull-right">
+                    </form>
+                </div>
+                <div id="registro" class="tab-pane fade in">
+                    <form action="#" id="ss-registro" method="post">
+                        <div class="form-group">
+                            <label for="nickname">Nomde de usuario:</label>
+                            <input type="text" name="ninkname" class="form-control" id="nickname" placeholder="nikname" >
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Clave:</label>
+                            <input type="password" class="form-control" name="pass" id="pwd" placeholder="clave" >
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">DNI:</label>
+                            <input type="text" class="form-control" name="dni" id="dni" placeholder="11111111-R" >
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" >
+                        </div>
+                        <div class="form-group">
+                            <label for="ape_1">1º Apellido:</label>
+                            <input type="text" class="form-control"  name="ape_1" id="ape_1" placeholder="Primer apellido" >
+                        </div>
+                        <div class="form-group">
+                            <label for="ape_2">2º Apellido:</label>
+                            <input type="text" class="form-control"  name="ape_2" id="ape_2" placeholder="Segundo apellido (opcional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="salt@example.com" >
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Fecha de nacimiento:</label>
+                            <input type="date" class="form-control" name="date" id="date" >
+                        </div>
+                        
+                        <div class="form-group">
+                        <input type="checkbox" name="TermConditions" id="TermConditions" value="0"> <span> Acepto los terminos y condiciones</span>
+                        </div>
+                        <input type="submit" value="Registrarse" class="btn btn-info pull-right">
+                    </form>
+                </div>   
+             </div>   
+        </div><!-- WRAPPER-->
+
+        </section>
     </main>
 
 
