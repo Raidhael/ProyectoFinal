@@ -25,7 +25,6 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
     
     require_once './includes/navBar.inc.php';
     ?>
-    
     <main class="ss-main-container">
         <section class="container-fluid">
             <div class="ss-grid-perfil">

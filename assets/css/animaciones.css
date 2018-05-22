@@ -11,12 +11,12 @@
 }
 .ss-navBar-animation div:first-child{
     transform: rotate(400deg) translate(0,12px);
-    background:linear-gradient(to right, #b7ff01 0%,#b7ff01 75%,rgb(63,63,63) 75%, rgb(63,63,63) 100% );
+    background:linear-gradient(to right, #b7ff01 0%,#b7ff01 70%,rgb(228, 228, 228) 70%, rgb(228, 228, 228) 100% );
     box-shadow: -8px 0px 15px 1px rgb(053, 255, 0); 
 }
 .ss-navBar-animation div:last-child{
     transform: rotate(-400deg) translate(0,-12px);
-    background: linear-gradient(to right, rgb(63, 63, 63) 22%,rgb(63,63,63) 25%,#cf0404 25%, #cf0404 100%);
+    background: linear-gradient(to right, rgb(228, 228, 228) 22%,rgb(228, 228, 228) 25%,#cf0404 25%, #cf0404 100%);
     box-shadow: 8px 0px 15px 1px  rgb(255, 0, 0); 
 }
 

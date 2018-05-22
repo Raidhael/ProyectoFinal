@@ -15,7 +15,7 @@ body{
     display: grid;
     position: relative;
     grid-template-columns: 1fr;
-    grid-template-rows: 20% repeat(8,1fr);
+    grid-template-rows: 20% repeat(7,10%) 1fr;
     border:1px solid black;
     padding: 5px;
     grid-row-gap: 0em;    
@@ -38,7 +38,7 @@ body{
     display: block;
 }
 
- .ss-perfil-nickname, .ss-perfil-nombre , .ss-perfil-ape1 , .ss-perfil-ape2, .ss-perfil-email, .ss-perfil-dni, .ss-perfil-clave, .ss-perfil-date {
+ .ss-perfil-nickname, .ss-perfil-nombre , .ss-perfil-ape1 , .ss-perfil-ape2, .ss-perfil-email, .ss-perfil-dni,  .ss-perfil-date {
     border-bottom: 2px solid black;
     vertical-align: bottom;
     padding: 0; 
@@ -89,34 +89,62 @@ body{
 }
 
 /*CONTENEDOR Y BOTONES SVG*/
-#acciones {
+.acciones {
     display: inline-block;
     position: relative;
     width: 120px;
 
 }
-#acciones .btn {
+.acciones .btn {
     margin:0px 5px;
     padding: 1%;
     width: 35px;
     height: 35px;
     background: rgba(255, 255, 255, 0.068);
-    border-radius: 15px;
+    border-radius: 2px;
 }
-#acciones svg {
+.acciones svg {
     stroke: rgb(2, 2, 2);
     stroke-width: 1;
-    animation: ss-parpadeo 5s infinite;
-    width: 25px;
-    height: 25px;
+    animation: ss-parpadeo-perfil 5s infinite;
+    width: 30px;
+    height: 30px;
     margin:0;
 }
-#acciones .done svg{
+.acciones .done svg{
     stroke-width: 3;
     stroke:black;
     fill: greenyellow;
-    
 }
+
+input.has-error{
+    background: rgba(255, 0, 0, 0.493);
+}
+span.alerta {
+    color:red;
+    display: block;
+    font-weight: bold;
+}
+form label {
+    display: block;
+}
+
+
+/*Subir archivo personalizado*/
+.img-perfil .acciones{
+    width: 100%!important;
+}
+input[type='file']{
+    position: absolute;
+    top:-20000px;
+}
+.upload svg {
+    animation: ss-parpadeo-perfil 5s infinite;
+    stroke: blue;
+    fill: rgb(138, 238, 255);
+}
+
+/*Fin subir archivo personalizado*/
 @media only screen and (min-width: 1080px) {
 .ss-grid-perfil {
     top:1vh;
@@ -128,12 +156,16 @@ body{
     box-shadow: -1px 7px 54px -8px rgba(255,255,255,0.49);
 }
 
+.acciones button {
+    background: transparent!important;
+    margin:15px;
+}
 
 }
 
 
 /*Animaciones*/
-@-webkit-keyframes ss-parpadeo {
+@-webkit-keyframes ss-parpadeo-perfil {
     0%   {stroke-width: 1;}
     25%  {stroke-width: 7;}
     50%  {stroke-width: 1;}
@@ -143,7 +175,7 @@ body{
 }
 
 /* Standard syntax */
-@keyframes ss-parpadeo {
+@keyframes ss-parpadeo-perfil{
     0%   {stroke-width: 1;}
     25%  {stroke-width: 7;}
     50%  {stroke-width: 1;}
