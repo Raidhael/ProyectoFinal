@@ -1,5 +1,5 @@
 html{
-    background: url(../images/JPG/1.jpg) no-repeat center center fixed; 
+    background: url(../images/JPG/2.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -19,7 +19,7 @@ body{
     border:1px solid black;
     padding: 5px;
     grid-row-gap: 0em;    
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.4);
     
 }
 .btn {
@@ -88,6 +88,35 @@ body{
     grid-row: 9;
 }
 
+/*CONTENEDOR Y BOTONES SVG*/
+#acciones {
+    display: inline-block;
+    position: relative;
+    width: 120px;
+
+}
+#acciones .btn {
+    margin:0px 5px;
+    padding: 1%;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.068);
+    border-radius: 15px;
+}
+#acciones svg {
+    stroke: rgb(2, 2, 2);
+    stroke-width: 1;
+    animation: ss-parpadeo 5s infinite;
+    width: 25px;
+    height: 25px;
+    margin:0;
+}
+#acciones .done svg{
+    stroke-width: 3;
+    stroke:black;
+    fill: greenyellow;
+    
+}
 @media only screen and (min-width: 1080px) {
 .ss-grid-perfil {
     top:1vh;
@@ -100,4 +129,57 @@ body{
 }
 
 
+}
+
+
+/*Animaciones*/
+@-webkit-keyframes ss-parpadeo {
+    0%   {stroke-width: 1;}
+    25%  {stroke-width: 7;}
+    50%  {stroke-width: 1;}
+    75%  {stroke-width: 7;}
+    100% {stroke-width: 1;}
+
+}
+
+/* Standard syntax */
+@keyframes ss-parpadeo {
+    0%   {stroke-width: 1;}
+    25%  {stroke-width: 7;}
+    50%  {stroke-width: 1;}
+    75%  {stroke-width: 7;}
+    100% {stroke-width: 1;}
+}
+
+.ss-fade-in {
+	opacity: 1;
+	animation-name: ss-fade-in;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.ss-fade-out {
+	opacity: 0;
+	animation-name: ss-fade-out;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-duration: 1s;
+}
+@keyframes ss-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes ss-fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }

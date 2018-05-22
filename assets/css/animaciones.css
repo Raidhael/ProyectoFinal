@@ -11,60 +11,15 @@
 }
 .ss-navBar-animation div:first-child{
     transform: rotate(400deg) translate(0,12px);
-    background:linear-gradient(to right, #b7ff01 0%,#b7ff01 75%,#fff 75%, #fff 100% );
-    -webkit-box-shadow: 0px -54px 150px -57px rgba(255,255,255,1);
-    -moz-box-shadow: 0px -54px 150px -57px rgba(255,255,255,1);
-    box-shadow: 0px -54px 150px -57px rgba(255,255,255,1);
-    animation-name: ss-saber-first;
-	animation-iteration-count: 1;
-	animation-duration: 0.3s;
+    background:linear-gradient(to right, #b7ff01 0%,#b7ff01 75%,rgb(63,63,63) 75%, rgb(63,63,63) 100% );
+    box-shadow: -8px 0px 15px 1px rgb(053, 255, 0); 
 }
 .ss-navBar-animation div:last-child{
     transform: rotate(-400deg) translate(0,-12px);
-    background: linear-gradient(to right, #fff 22%,#fff 25%,#cf0404 25%, #cf0404 100%);
-    -webkit-box-shadow: 0px -54px 150px -57px rgba(255,255,255,1);
-    -moz-box-shadow: 0px -54px 150px -57px rgba(255,255,255,1);
-    box-shadow: 0px -54px 150px -57px rgba(255,255,255,1);   
-    animation-name: ss-saber-last;
-	animation-iteration-count: 1;
-	animation-duration: 0.3s; 
-}
-@-webkit-keyframes ss-saber-first{
-    0%   {transform:rotate(0deg) translate(0px);}
-    25%  {transform:rotate(100deg)translate(3px);}
-    50%  {transform:rotate(200deg)translate(6px);}
-    75%  {transform:rotate(300deg)translate(9px);}
-    100% {transform:rotate(400deg)translate(12px);}
-    
-
+    background: linear-gradient(to right, rgb(63, 63, 63) 22%,rgb(63,63,63) 25%,#cf0404 25%, #cf0404 100%);
+    box-shadow: 8px 0px 15px 1px  rgb(255, 0, 0); 
 }
 
-/* Standard syntax */
-@keyframes ss-saber-first {
-    0%   {transform:rotate(0deg) translate(0px);}
-    25%  {transform:rotate(100deg)translate(3px);}
-    50%  {transform:rotate(200deg)translate(6px);}
-    75%  {transform:rotate(300deg)translate(9px);}
-    100% {transform:rotate(400deg)translate(12px);}
-}
-
-@-webkit-keyframes ss-saber-last{
-    0%   {transform:rotate(-0deg) translate(-0px);}
-    25%  {transform:rotate(-100deg)translate(-3px);}
-    50%  {transform:rotate(-200deg)translate(-6px);}
-    75%  {transform:rotate(-300deg)translate(-9px);}
-    100% {transform:rotate(-400deg)translate(-12px);}
-
-}
-
-/* Standard syntax */
-@keyframes ss-saber-last {
-    0%   {transform:rotate(-0deg) translate(-0px);}
-    25%  {transform:rotate(-100deg)translate(-3px);}
-    50%  {transform:rotate(-200deg)translate(-6px);}
-    75%  {transform:rotate(-300deg)translate(-9px);}
-    100% {transform:rotate(-400deg)translate(-12px);}
-}
 .ss-navBar-animation div:nth-child(2){
     -ms-transform: scale(0,0); 
     -webkit-transform: scale(0,0); 
