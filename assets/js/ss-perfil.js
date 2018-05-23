@@ -20,29 +20,12 @@ function ss_editable(){
                     $($boton).parent().append(data);
                 },
                 complete: function () {
+                    //BOTONES
                     ss_campo_editable($id);
-                    $('#formulario-'+$id+' input').keypress(function (e){
-                        $('#formulario-'+$id).submit(function (e){
-                            e.preventDefault();
-                        });
-                        if (e.keyCode == 13){
-                            $('#formulario-'+$id).parent().find('.done').trigger('click');
-                        }
-                    });
-                   $('#'+$id).parent().find('.done').click( function (){
-                       ss_editar($id);        
-                    });
-                    $('#'+$id).parent().find('.cancel').click(function(){
-                        $($boton).css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
-                        $('#'+$id).css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
-                        $('#formulario-'+$id).remove();
-                        var $Padre=$(this).parent().parent().attr('class');                    
-                        $Padre = $Padre.split(' ')[0];
-                        $('.'+$Padre).find('.acciones').addClass('ss-fade-out').remove();
-                    });
-                    $('#'+$id).parent().find('.upload').click( function (){
-                        $('#input-'+$id).trigger('click');
-                     });
+                    ss_form_input($id);
+                    ss_button_cancel($id);
+                    ss_button_done($id);
+                    ss_button_upload($id);
                 },
                 error: function () {
                     console.log('error ajax');
@@ -55,26 +38,11 @@ function ss_editable(){
                     $($boton).parent().append(data);
                 },
                 complete: function () {
+                    //BOTONES
                     ss_campo_editable($id);
-                    $('#formulario-'+$id+' input').keypress(function (e){
-                        $('#formulario-'+$id).submit(function (e){
-                            e.preventDefault();
-                        });
-                        if (e.keyCode == 13){
-                            $('#formulario-'+$id).parent().find('.done').trigger('click');
-                        }
-                    });
-                   $('#'+$id).parent().find('.done').click( function (){
-                       ss_editar($id);        
-                    });
-                    $('#'+$id).parent().find('.cancel').click(function(){
-                        $($boton).css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
-                        $('#'+$id).css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
-                        $('#formulario-'+$id).remove();
-                        var $Padre=$(this).parent().parent().attr('class');                    
-                        $Padre = $Padre.split(' ')[0];
-                        $('.'+$Padre).find('.acciones').addClass('ss-fade-out').remove();
-                    });
+                    ss_form_input($id);
+                    ss_button_cancel($id);
+                    ss_button_done($id);
                 },
                 error: function () {
                     console.log('error ajax');
@@ -147,8 +115,24 @@ if (pass_actual != '' && pass_nueva != '' && pass_repetida != ''){
     $('#formulario-'+id+' input').addClass('has-error');
 }
 }else if (id == 'img_perfil'){
+    var formData = new FormData(document.getElementById("formulario-"+id));
     
-
+    console.log(val);
+    $.ajax({
+        url: 'includes/ajax/validaDatosPerfil.ajax.php',
+        data: formData,
+        dataType: 'json',
+        type: 'post',
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data){
+            console.log(data);
+        },
+        error: function(){
+            console.log('error ajax edita');
+        }
+    });
 }else{
 var val=$('#input-'+id).val();
     $.ajax({
@@ -194,4 +178,53 @@ function ss_campo_editable(id){
         $('#'+id).parent().append($formulario).addClass('ss-fade-in');
     }
         
+}
+
+function ss_file_input(id){
+    $('#input-'+id).change(function (){
+        var val = $(this).val();
+    });
+}
+
+
+function ss_form_input(id){
+    $('#formulario-'+id+' input').keypress(function (e){
+        $('#formulario-'+id).submit(function (e){
+            e.preventDefault();
+        });
+        if (e.keyCode == 13){
+            $('#formulario-'+id).parent().find('.done').trigger('click');
+        }
+    });
+}
+function ss_button_cancel (id){
+    $('#'+id).parent().find('.cancel').click(function(){
+        $('#'+id).parent().find('.btn').css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
+        $('#'+id).css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
+        $('#formulario-'+id).remove();
+        var $Padre=$(this).parent().parent().attr('class');                    
+        $Padre = $Padre.split(' ')[0];
+        $('.'+$Padre).find('.acciones').addClass('ss-fade-out').remove();
+    });
+}
+
+function ss_button_done(id){
+    $('#'+id).parent().find('.done').click( function (){
+        ss_editar(id);        
+     });
+}
+
+function ss_button_upload(id){
+    $('#'+id).parent().find('.upload').click( function (){
+        $('#input-'+id).trigger('click');
+     });
+
+     $('#input-'+id).change(function (){
+        var val = $(this).val();
+        val = val.split("\\")[2];
+        if($('#'+id).parent().find('.ss-img-subida'))$('#'+id).parent().find('.ss-img-subida').remove();
+        $fotoSubida = '<span class="ss-img-subida">'+val+'</span>';
+        $('#'+id).parent().find('.acciones').prepend($fotoSubida);
+        console.log(val);
+     });
 }

@@ -94,7 +94,15 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
 
     echo json_encode($errores);
 }else if (isset($_FILES['img_perfil']) && $_FILES['img_perfil'] != null){
-    $bandera = true;
+    /*Valor array name {
+        name: "DeadPool2.jpg",
+        type: "image/jpeg",
+        tmp_name: "C:\xampp\tmp\php5352.tmp",
+        error: 0, 
+        size: 21419}
+    */
+        
+    $bandera = $_FILES;
     echo json_encode($bandera);
 }else {
     echo json_encode(false);

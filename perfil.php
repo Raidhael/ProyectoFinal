@@ -18,16 +18,20 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
     <link rel="stylesheet" href="/assets/css/ss-fonts.css">
     <link rel="stylesheet" href="/assets/css/ss-style.css">
     <link rel="stylesheet" href="/assets/css/ss-perfil.css">
-    
+    <link rel="stylesheet" href="/assets/css/fondoAnimado.css">
 </head>
 <body>
+<canvas id="canvas-club"></canvas>
     <?php
     
     require_once './includes/navBar.inc.php';
     ?>
     <main class="ss-main-container">
+   
         <section class="container-fluid">
+        
             <div class="ss-grid-perfil">
+            
                 <div class="img-perfil">
                     <span class="ss-perfil-titulo" id="img_perfil">Foto perfil:</span>
                     <figure>
@@ -78,24 +82,13 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
             </div>
         </section>
     </main>
-
+    <script src="/assets/js/fondoAnimado.js"></script>
     <script src="/assets/js/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/ss-tuCine.js"></script>
     <script src="/assets/js/ss-perfil.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 <?php
 
 }else{
