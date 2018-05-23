@@ -8,6 +8,13 @@ html{
 body{
     background: transparent;
 }
+input {
+    background: rgba(255, 255, 255, 0.527);
+    border: none;
+    border-radius: 10px;
+    padding: 1px;
+    margin:4px;
+}
 .container-fluid{
     padding: 0;
 }
@@ -156,6 +163,14 @@ input[type='file']{
     font-weight: 400;
     
     height: 35px;
+}
+.alerta-img {
+    font-size: 15px;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    color:red;
+    clear: both;
 }
 /*Fin subir archivo personalizado*/
 @media only screen and (min-width: 1080px) {

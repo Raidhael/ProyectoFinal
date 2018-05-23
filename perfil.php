@@ -1,5 +1,5 @@
 <?php
-require_once './includes/sesiones/sesion.inc.php';
+require_once './includes/sesiones/sesionObligatoria.inc.php';
 if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
     require_once './includes/conexiones/conexion-global.php';
     $sql =$conexion->prepare("SELECT * from usuario WHERE email like :email;");
@@ -34,7 +34,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
             
                 <div class="img-perfil">
                     <span class="ss-perfil-titulo" id="img_perfil">Foto perfil:</span>
-                    <figure>
+                    <figure id="imagenPerfil">
                         <img class="img-circle  img-responsive" src="<?=$datos['img_perfil']?>" alt="imagen  de perfil">
                     </figure>
                     <button class="btn pull-right"> Cambiar foto</button>

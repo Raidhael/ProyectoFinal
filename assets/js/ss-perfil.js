@@ -75,25 +75,24 @@ if (pass_actual != '' && pass_nueva != '' && pass_repetida != ''){
                     $('#formulario-'+id).prepend($alerta);
                     $('#formulario-'+id+' input').removeClass('has-error');
                     $('#formulario-'+id+' input').addClass('has-error');
-                } 
-                if (data['acceso']== false){
+                }else if (data['acceso']== false){
                     var $alerta = '<span class="alerta">¡La clave introducida es erronea!</span>';
                     if ($('#formulario-'+id).find('.alerta')) $('#formulario-'+id).find('.alerta').remove();
                     $('#formulario-'+id).prepend($alerta);
                     $('#formulario-'+id+' input').removeClass('has-error');
                     $('#input-'+id+'-actual').addClass('has-error');
-                }
-                if (data['coinciden'] == false){
+                }else if (data['coinciden'] == false){
                     var $alerta = '<span class="alerta">¡Las claves no coinciden!</span>';
                     if ($('#formulario-'+id).find('.alerta')) $('#formulario-'+id).find('.alerta').remove();
                     $('#input-'+id+'-nueva, #input-'+id+'-repite').addClass('has-error').parent().append($alerta);
-                }
-                if (data['seguridad'] == false){
+                }else  if (data['seguridad'] == false){
                     var $alerta = '<span class="alerta">¡La nueva clave no cumple los requisitos de seguridad!</span>';
                     if ($('#formulario-'+id).find('.alerta')) $('#formulario-'+id).find('.alerta').remove();
                     $('#formulario-'+id).prepend($alerta);
                     $('#formulario-'+id+' input').removeClass('has-error');
                     $('#input-'+id+'-nueva').addClass('has-error');
+                }else{
+                    $('#formulario-'+id).parent().find('.acciones').find('.cancel').trigger('click');       
                 }
             },
             error: function(){
@@ -116,18 +115,37 @@ if (pass_actual != '' && pass_nueva != '' && pass_repetida != ''){
 }
 }else if (id == 'img_perfil'){
     var formData = new FormData(document.getElementById("formulario-"+id));
-    
-    console.log(val);
+
     $.ajax({
         url: 'includes/ajax/validaDatosPerfil.ajax.php',
         data: formData,
-        dataType: 'json',
+        dataType: 'text',
         type: 'post',
         cache: false,
         contentType: false,
         processData: false,
         success: function (data){
             console.log(data);
+            if($('#formulario-'+id).parent().find('.alerta-img').append($alerta)) $('#formulario-'+id).parent().find('.alerta-img').remove();
+            if (!data['size']){
+                $alerta = '<span class="alerta-img">¡No se ha seleccionado ningun archivo!</span>';
+                $('#formulario-'+id).parent().find('.acciones').append($alerta);
+            }else if (data['spam']){
+                $alerta = '<span class="alerta-img">¡Tiempo de espera entre subida de archivos : 1 minuto!</span>';
+                $('#formulario-'+id).parent().find('.acciones').append($alerta);
+            }else if (!data['img']){
+                $alerta = '<span class="alerta-img">¡Solo se admite la subida de una imagen!</span>';
+                $('#formulario-'+id).parent().find('.acciones').append($alerta);
+            }else if (!data['subida'] || !data['img_src']){
+                $alerta = '<span class="alerta-img">¡Oooops! No se ha podido actualizar el perfil</span>';
+                $('#formulario-'+id).parent().find('.acciones').append($alerta);
+            }else{
+                $img = '<img class="img-circle  img-responsive" src="'+data['img_src']+'" alt="imagen  de perfil">';
+                $('#imagenPerfil').find('img').remove();
+                $($img).addClass('ss-fade-in');
+                $('#imagenPerfil').prepend($img);
+                $('#formulario-'+id).parent().find('.acciones').find('.cancel').trigger('click');
+            }
         },
         error: function(){
             console.log('error ajax edita');
@@ -143,11 +161,8 @@ var val=$('#input-'+id).val();
         success: function (data){
             
             if (data){
-                $('#formulario-'+id).remove();
-                $('#'+id).parent().find('.acciones').addClass('ss-fade-out').remove();
                 $('#'+id).html(val);
-                $('#'+id).css('display','inline-block').removeClass('ss-fade-out').addClass('ss-fade-in');
-                $('#'+id).parent().find('.btn').removeClass('ss-fade-out').addClass('ss-fade-in').css('display','inline-block');
+                $('#formulario-'+id).parent().find('.acciones').find('.cancel').trigger('click');
             }else{
                 var $alerta = '<span class="alerta">¡Dato invalido!</span>';
                 $('#formulario-'+id).append($alerta);

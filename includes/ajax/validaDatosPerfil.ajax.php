@@ -1,5 +1,5 @@
 <?php
-    require_once '../sesiones/sesion.inc.php';
+    require_once '../sesiones/sesionObligatoria.inc.php';
     require_once '../conexiones/conexion-global.php';
 if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && $_POST['valor'] != null)){
 
@@ -93,17 +93,81 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
         }
 
     echo json_encode($errores);
-}else if (isset($_FILES['img_perfil']) && $_FILES['img_perfil'] != null){
-    /*Valor array name {
-        name: "DeadPool2.jpg",
-        type: "image/jpeg",
-        tmp_name: "C:\xampp\tmp\php5352.tmp",
-        error: 0, 
-        size: 21419}
+        /*Valor array name {name: "DeadPool2.jpg",type: "image/jpeg",tmp_name: "C:\xampp\tmp\php5352.tmp",error: 0,size: 21419}
     */
-        
-    $bandera = $_FILES;
-    echo json_encode($bandera);
+}else if (isset($_FILES['img_perfil']) && $_FILES['img_perfil'] != null){
+    //ARRAY PARA ERRORES PERSONALIZADOS
+    $errores = [];
+    //SE RECIBEN DATOS JUNTO EL FORMULARIO
+    if ($_FILES['img_perfil']['size'] > 0){
+
+        //FUNCION ANTI-SPAM
+        if (!isset($_SESSION['saltySpam'])){
+            $_SESSION['saltySpam'] = new DateTime(date('H:i:s'));
+        }else{
+            $inicio = new DateTime(date('H:i:s'));
+            $intervalo = $_SESSION['saltySpam']->diff($inicio);
+            $intervalo = intval($intervalo->format('%i'));
+            
+            if ($intervalo >= 1){
+                $_SESSION['saltySpam'] = new DateTime(date('H:i:s'));
+            }else{
+                $errores['spam'] = true;
+                echo json_encode($errores);
+                exit();
+            }   
+        }
+        //FIN FUNCION ANTI-SPAM
+        $errores['size'] = true;
+
+        //VALIDACION MIME - SE PERMITEN ARCHIVOS JPEG JPG PNG
+        $tipo = explode('image/',$_FILES["img_perfil"]["type"])[1];
+        if ($tipo == 'png' || $tipo == 'jpeg' || $tipo == 'jpg'){
+            $errores['img'] = true;
+
+            //SE GENERA EL NOMBRE DE LA RUTA ,CARPETA Y IMAGEN 
+            $ruta = realpath('../../assets/images/profiles');
+            $destino = $conexion->query('SELECT DNI FROM usuario WHERE email LIKE "'.$_SESSION['email'].'";');
+            $destino = $destino->fetch(PDO::FETCH_NUM)[0];
+            $carpeta = 'dir-'.$destino;
+            //NOMBRE ALEATORIO
+            $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; 
+            $cad = ""; 
+            for($i=0;$i<12;$i++) {$cad .= substr($str,rand(0,62),1);} 
+            $archivo = $cad.'.'.$tipo;
+            $directory = scandir($ruta);
+            $existe = false;
+
+            //SE VERIFICA QUE LA CARPETA EXISTE
+            foreach ($directory as $dir){
+                if ($dir == $carpeta) $existe = true;
+            }
+            if (!$existe) mkdir($ruta.'/'.$carpeta , 777);
+            else{
+            //SE VACIA LA CARPETA
+                $directory = scandir($ruta.'/'.$carpeta)[0];
+                unlink($directory);
+            }
+            //SE SUBE LA IMAGEN
+            $destinoFinal = $ruta.'/'.$carpeta.'/'.$archivo;   
+           if (move_uploaded_file ( $_FILES [ 'img_perfil' ][ 'tmp_name' ], $destinoFinal)){
+                $errores['subida']=true;
+                $rutaServidor ='./assets/images/profiles/'.$carpeta.'/'.$archivo;
+                if($conexion->query('UPDATE usuario SET img_perfil = "'.$rutaServidor.'" WHERE email LIKE "'.$_SESSION['email'].'";')){
+                    $errores['img_src'] = $rutaServidor;
+                }else{
+                    $errores['img_src']= false;
+                }
+            }else{
+                $errores['subida']=false;
+            }
+        }else{
+            $errores['img'] = false;
+        }
+    }else{
+        $errores['size'] = false;
+    }     
+    echo json_encode( $errores);
 }else {
     echo json_encode(false);
 }
