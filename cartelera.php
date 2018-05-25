@@ -15,6 +15,7 @@ require_once './includes/conexiones/conexion-global.php';
     <title>Cartelera</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/ss-fonts.css">
+    <link rel="stylesheet" href="/assets/css/config-global.css">
     <link rel="stylesheet" href="/assets/css/ss-style.css">
 </head>
 <body>
@@ -36,12 +37,12 @@ require_once './includes/conexiones/conexion-global.php';
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">Modal Header</h3>
-          <button type="button" class="close" data-dismiss="modal"><?php echo file_get_contents('./assets/images/SVG/cancel.svg')?></button>
+          <button type="button" class="close" data-dismiss="modal"><?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/assets/images/SVG/cancel.svg')?></button>
         </div>
         <div class="modal-body">
             <article class="ss-grid-pelicula">
                 <figure class="ss-img-cartelera">
-                    <img src="ejemplo" alt="'.$pelicula['titulo'].'">
+                    <img src="#" alt="'.$pelicula['titulo'].'">
                 </figure>                   
                 <div class="ss-item-specs-cartelera"><h5></h5></div>
                 <div class="ss-item-duracion-cartelera"><h5></h5></div>

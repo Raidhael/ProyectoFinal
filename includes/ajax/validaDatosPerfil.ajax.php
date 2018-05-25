@@ -102,7 +102,7 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
     if ($_FILES['img_perfil']['size'] > 0){
 
         //FUNCION ANTI-SPAM
-        if (!isset($_SESSION['saltySpam'])){
+       if (!isset($_SESSION['saltySpam'])){
             $_SESSION['saltySpam'] = new DateTime(date('H:i:s'));
         }else{
             $inicio = new DateTime(date('H:i:s'));
@@ -126,10 +126,11 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
             $errores['img'] = true;
 
             //SE GENERA EL NOMBRE DE LA RUTA ,CARPETA Y IMAGEN 
-            $ruta = realpath('../../assets/images/profiles');
-            $destino = $conexion->query('SELECT DNI FROM usuario WHERE email LIKE "'.$_SESSION['email'].'";');
-            $destino = $destino->fetch(PDO::FETCH_NUM)[0];
-            $carpeta = 'dir-'.$destino;
+            $raizServer = $_SERVER['DOCUMENT_ROOT'];
+            $ruta = $_SERVER['DOCUMENT_ROOT'].'/assets/images/profiles';
+            $destino = $conexion->query('SELECT DNI, img_perfil FROM usuario WHERE email LIKE "'.$_SESSION['email'].'";');
+            $destino = $destino->fetch(PDO::FETCH_ASSOC);
+            $carpeta = 'dir-'.$destino['DNI'];
             //NOMBRE ALEATORIO
             $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; 
             $cad = ""; 
@@ -145,14 +146,13 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
             if (!$existe) mkdir($ruta.'/'.$carpeta , 777);
             else{
             //SE VACIA LA CARPETA
-                $directory = scandir($ruta.'/'.$carpeta)[0];
-                unlink($directory);
+                unlink($raizServer.$destino['img_perfil']);
             }
             //SE SUBE LA IMAGEN
             $destinoFinal = $ruta.'/'.$carpeta.'/'.$archivo;   
            if (move_uploaded_file ( $_FILES [ 'img_perfil' ][ 'tmp_name' ], $destinoFinal)){
                 $errores['subida']=true;
-                $rutaServidor ='./assets/images/profiles/'.$carpeta.'/'.$archivo;
+                $rutaServidor ='/assets/images/profiles/'.$carpeta.'/'.$archivo;
                 if($conexion->query('UPDATE usuario SET img_perfil = "'.$rutaServidor.'" WHERE email LIKE "'.$_SESSION['email'].'";')){
                     $errores['img_src'] = $rutaServidor;
                 }else{

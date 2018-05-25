@@ -16,12 +16,12 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
     <title>Perfil</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/ss-fonts.css">
-    <link rel="stylesheet" href="/assets/css/ss-style.css">
+    <link rel="stylesheet" href="/assets/css/config-global.css">
     <link rel="stylesheet" href="/assets/css/ss-perfil.css">
-    <link rel="stylesheet" href="/assets/css/fondoAnimado.css">
+    
 </head>
 <body>
-<canvas id="canvas-club"></canvas>
+
     <?php
     
     require_once './includes/navBar.inc.php';
@@ -35,7 +35,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
                 <div class="img-perfil">
                     <span class="ss-perfil-titulo" id="img_perfil">Foto perfil:</span>
                     <figure id="imagenPerfil">
-                        <img class="img-circle  img-responsive" src="<?=$datos['img_perfil']?>" alt="imagen  de perfil">
+                        <img class=" img-circle img-responsive" src="<?=$datos['img_perfil']?>" alt="imagen  de perfil">
                     </figure>
                     <button class="btn pull-right"> Cambiar foto</button>
             </div>
@@ -82,7 +82,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
             </div>
         </section>
     </main>
-    <script src="/assets/js/fondoAnimado.js"></script>
+    
     <script src="/assets/js/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/ss-tuCine.js"></script>

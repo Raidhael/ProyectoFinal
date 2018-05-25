@@ -15,6 +15,7 @@ require_once './includes/conexiones/conexion-global.php';
     <!--Links de estilos -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/ss-fonts.css">
+    <link rel="stylesheet" href="/assets/css/config-global.css">
     <link rel="stylesheet" href="/assets/css/ss-style.css">
 </head>
 <body>
@@ -47,10 +48,10 @@ require_once './includes/conexiones/conexion-global.php';
 
                     <div class="ss-slider-new-navigation">
                         <span class="ss-slider-navigation-left">
-                            <?php echo file_get_contents('./assets/images/SVG/flecha-left.svg');?>
+                            <?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/assets/images/SVG/flecha-left.svg');?>
                             </span>
                             <span class="ss-slider-navigation-right">
-                            <?php echo file_get_contents('./assets/images/SVG/flecha-right.svg');?>
+                            <?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/assets/images/SVG/flecha-right.svg');?>
                         </span>
                     </div>
                 </article>
@@ -64,7 +65,7 @@ require_once './includes/conexiones/conexion-global.php';
                         $resultado = $conexion->query($sql);
                         while (($peliculas =$resultado->fetch(PDO::FETCH_ASSOC)) != null ){
                         echo  '<div class="ss-grid-cartelera-item">
-                                    <a href="./cartelera.php?id='.$peliculas['id_pelicula'].'">
+                                    <a href="cartelera.php?id='.$peliculas['id_pelicula'].'">
                                         <figure id ="'.$peliculas['id_pelicula'].'">    
                                             <img  class="img-responsive" src="'.$peliculas['img_pelicula'].'" alt="'.$peliculas['titulo'].'">    
                                             <figcaption><h5 class="ss-cartelera-titulo">'.$peliculas['titulo'].'</h5></figcaption>
@@ -84,7 +85,7 @@ require_once './includes/conexiones/conexion-global.php';
                 <article class="ss-grid-ultimaPromocion">
                     <h2 class="ss-header-item">Ultima Promocion</h2>
                     <figure class="ss-grid-item-ultimaPromocion-imagen">
-                        <img src="./assets/images/jpg/avengers.jpg" alt="imagenPrueba" class="img-responsive">
+                        <img src="/assets/images/jpg/avengers.jpg" alt="imagenPrueba" class="img-responsive">
                     </figure>
                     <h4 class="ss-grid-item-ultimaPromocion-titulo">Titulo de la promocion </h4>
                     <p class="ss-grid-item-ultimaPromocion-texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem animi nam quis amet sapiente quae quia natus vero molestiae maiores, placeat nulla reiciendis incidunt esse laudantium nobis adipisci odit tempora.</p>

@@ -38,7 +38,8 @@
     <title>Registro</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/ss-fonts.css">
-    <link rel="stylesheet" href="/assets/css/ss-style.css">
+
+    <link rel="stylesheet" href="/assets/css/config-global.css">
     <link rel="stylesheet" href="/assets/css/ss-registro.css">
 </head>
 <body>

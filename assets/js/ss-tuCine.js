@@ -86,7 +86,7 @@ function ss_slider_peliculas_active () {
         var id = $('.ss-img-slider').attr('id');
         
         $.ajax({
-            url: './includes/ajax/sliderPeliculas.ajax.php',
+            url: '/includes/ajax/sliderPeliculas.ajax.php',
             type: 'post',
             dataType:'json',
             data: {'id':id, 'action':'next'},
@@ -112,7 +112,7 @@ function ss_slider_peliculas_active () {
         $('.ss-slider-navigation-left svg').toggleClass('ss-rotacion-slider-nav');
         var id = $('.ss-img-slider').attr('id');
         $.ajax({
-            url: './includes/ajax/sliderPeliculas.ajax.php',
+            url: '/includes/ajax/sliderPeliculas.ajax.php',
             type: 'post',
             dataType:'json',
             data: {'id':id, 'action':'prev'},

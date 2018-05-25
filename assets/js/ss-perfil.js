@@ -119,7 +119,7 @@ if (pass_actual != '' && pass_nueva != '' && pass_repetida != ''){
     $.ajax({
         url: 'includes/ajax/validaDatosPerfil.ajax.php',
         data: formData,
-        dataType: 'text',
+        dataType: 'json',
         type: 'post',
         cache: false,
         contentType: false,

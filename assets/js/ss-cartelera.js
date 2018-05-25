@@ -21,7 +21,7 @@ function ss_muestraPeliculas(){
 
         
         $.ajax({
-            url: './includes/ajax/cartelera.ajax.php',
+            url: '/includes/ajax/cartelera.ajax.php',
             type: 'post',
             data: {'pag':pag},
             success: function (data){
@@ -44,7 +44,7 @@ function ss_muestraPeliculas(){
 
 function ss_img_popUp(id){
     $.ajax({
-        url: './includes/ajax/popUpCartelera.ajax.php',
+        url: '/includes/ajax/popUpCartelera.ajax.php',
         type: 'post',
         dataType:'json',
         data: {'id':id},
