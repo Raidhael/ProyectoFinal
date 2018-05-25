@@ -1,0 +1,170 @@
+
+        html,body{
+            position: relative;
+            background: #111;
+            padding: 0;
+            margin: 0;
+        }
+        .container-fluid{
+            padding: 0;
+        }
+      /*ESTILOS PERSONALIZADOS BACKEND*/
+      .ss-actions * {
+        background: transparent!important;
+    }
+      .ss-actions {
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 0;
+        top:15vh;
+        margin: 0!important;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .ss-titulo-accion {
+        display: block;
+        position: relative;
+        width: 100%;
+        color:white;
+        height: 50px;
+        top: 0;
+        text-align: center;
+        transition: 0.6s;
+        font-weight: 300;
+        
+    }
+    .ss-item-accion{
+        position: relative;
+        width: 100%;
+        height: 80%;
+    }
+    .ss-actions svg{
+        display: flex;
+        
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        stroke: #111;
+        fill:rgb(255, 255, 255);
+        stroke-width: 1;
+        transition: 0.6s;
+        
+    }
+    .ss-action-1{
+        display: block;
+        grid-column: 1;
+        grid-row:1;
+
+    }
+
+    .ss-action-1 svg, .ss-action-1 span {
+        fill: rgb(0, 247, 255);
+        stroke: black;
+        color: rgb(0, 247, 255);
+    }
+    .ss-action-2{
+        display: block;
+        grid-column: 2;
+        grid-row:1;
+
+    }
+    .ss-action-2 svg, .ss-action-2 span {
+        fill: rgb(60, 255, 0);
+        stroke: rgb(0, 0, 0);
+        color: rgb(60, 255, 0);
+    }
+
+    .ss-action-3{
+        display: block;
+        grid-column: 1;
+        grid-row:2;
+
+    }
+    .ss-action-3 svg, .ss-action-3 span {
+        fill: rgb(255, 0, 0);
+        stroke: rgb(0, 0, 0);
+        color: rgb(255, 0, 0);
+    }
+    .ss-action-4{
+        display: block;
+        grid-column: 2;
+        grid-row:2;
+
+    }
+
+
+
+    @media only screen and (min-width: 1080px){
+
+        .ss-actions {
+            display: grid;
+            position: relative;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 0;
+            top:0;
+            left:5vw;
+            margin: 0!important;
+            height: 70vh;
+            width: 90%;
+            padding: 0;
+            margin: 0;
+                
+        }
+        .ss-actions span {
+            color:white;
+        }
+        .ss-actions svg{
+            display: flex;
+            margin: auto;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            max-width: 400px;
+            max-height: 400px;
+            stroke: #111;
+            fill:rgb(255, 255, 255);
+            stroke-width: 1;
+            transition: 0.6s;
+            
+        }
+
+        .ss-item-accion{
+            position: relative;
+            width: 100%;
+            height: 80%;
+        }
+
+
+
+        .ss-action-1:hover svg, .ss-action-1:hover span {
+            fill: rgb(0, 247, 255);
+            stroke: rgb(0, 247, 255);
+            color: rgb(0, 247, 255);
+        }
+
+        .ss-action-2:hover svg, .ss-action-2:hover span {
+            fill: rgb(255, 230, 0);
+            stroke: rgb(255, 230, 0);
+            color: rgb(255, 230, 0);
+        }
+        .ss-action-3:hover svg, .ss-action-3:hover span {
+            fill: rgb(255, 0, 0);
+            stroke: rgb(255, 0, 0);
+            color: rgb(255, 0, 0);
+        }
+        .ss-action-4:hover svg, .ss-action-4:hover span {
+            fill: rgb(110, 153, 41);
+            stroke: rgb(110, 153, 41);
+            color: rgb(110, 153, 41);
+        }
+    }

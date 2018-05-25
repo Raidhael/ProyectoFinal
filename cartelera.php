@@ -13,10 +13,10 @@ require_once './includes/conexiones/conexion-global.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartelera</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/ss-fonts.css">
-    <link rel="stylesheet" href="/assets/css/config-global.css">
-    <link rel="stylesheet" href="/assets/css/ss-style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/ss-fonts.css">
+    <link rel="stylesheet" href="/css/config-global.css">
+    <link rel="stylesheet" href="/css/ss-style.css">
 </head>
 <body>
 <?php
@@ -37,7 +37,7 @@ require_once './includes/conexiones/conexion-global.php';
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">Modal Header</h3>
-          <button type="button" class="close" data-dismiss="modal"><?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/assets/images/SVG/cancel.svg')?></button>
+          <button type="button" class="close" data-dismiss="modal"><?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/images/SVG/cancel.svg')?></button>
         </div>
         <div class="modal-body">
             <article class="ss-grid-pelicula">
@@ -60,9 +60,9 @@ require_once './includes/conexiones/conexion-global.php';
         echo '<input type="hidden" name="id" id="id" value="'.$id.'">';
         echo '<input type="hidden" name="pag" id="pag" value="'.$pag.'">';
     ?>
-    <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/ss-cartelera.js"></script>
-    <script src="/assets/js/ss-tuCine.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/ss-cartelera.js"></script>
+    <script src="/js/ss-tuCine.js"></script>
 </body>
 </html>

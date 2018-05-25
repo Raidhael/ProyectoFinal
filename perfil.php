@@ -14,10 +14,10 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/ss-fonts.css">
-    <link rel="stylesheet" href="/assets/css/config-global.css">
-    <link rel="stylesheet" href="/assets/css/ss-perfil.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/ss-fonts.css">
+    <link rel="stylesheet" href="/css/config-global.css">
+    <link rel="stylesheet" href="/css/ss-perfil.css">
     
 </head>
 <body>
@@ -83,10 +83,10 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != null ){
         </section>
     </main>
     
-    <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/ss-tuCine.js"></script>
-    <script src="/assets/js/ss-perfil.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ss-tuCine.js"></script>
+    <script src="/js/ss-perfil.js"></script>
 </body>
 </html>
 <?php

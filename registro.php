@@ -18,8 +18,10 @@
             if (password_verify($pass,$hash)){
                 $_SESSION['tipo'] = $existe['tipo'];
                 $_SESSION['email'] = $existe['email'];
-                echo '<h1> HOLA</h1>';
-                header('location: index.php');
+                if ($_SESSION['tipo'] == 'usuario')
+                    header('location: /index.php');
+                else 
+                    header('location: /backend/indexBackend.php');
             }else{
                 $alerta = 1;
             }
@@ -36,11 +38,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/ss-fonts.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/ss-fonts.css">
 
-    <link rel="stylesheet" href="/assets/css/config-global.css">
-    <link rel="stylesheet" href="/assets/css/ss-registro.css">
+    <link rel="stylesheet" href="/css/config-global.css">
+    <link rel="stylesheet" href="/css/ss-registro.css">
 </head>
 <body>
 <?php
@@ -123,9 +125,9 @@
 
 
 
-    <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/ss-tuCine.js"></script>
-    <script src="/assets/js/ss-registro.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ss-tuCine.js"></script>
+    <script src="/js/ss-registro.js"></script>
 </body>
 </html>

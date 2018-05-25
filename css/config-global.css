@@ -62,6 +62,8 @@ header h1 {
     padding:10px;
     object-fit: cover;
     margin : 0;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
 }
 
 .ss-logo-cine{
@@ -243,7 +245,8 @@ header h1 {
         top: 0;
         left:0;
         object-fit: cover!important;
-        
+        -webkit-filter: brightness(3);
+        filter: brightness(3);
         border-radius: 20%;
         margin : 0 1rem 0 0;
     }

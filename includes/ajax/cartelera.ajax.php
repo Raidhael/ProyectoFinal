@@ -31,13 +31,13 @@
                     //Se hace la paginacion
                     if ($totalPaginas > 1){
                         echo '<div  class="ss-cartelera-paginacion">';
-                        if ($_POST['pag'] != 1) echo ' <a href="#" class="ss-prev-pag">'.file_get_contents('../../assets/images/SVG/flecha-left.svg').' </a>';
+                        if ($_POST['pag'] != 1) echo ' <a href="#" class="ss-prev-pag">'.file_get_contents('../../images/SVG/flecha-left.svg').' </a>';
                         for ($i = 0 ; $i < $totalPaginas; $i++){
                             if (($i + 1 )== $_POST['pag']) echo '<span class="ss-pag-actual">'.($i + 1).'</span>';
                             else echo '<a href="#">'.($i+1).'</a>';
                             if (( $i + 1 ) != $totalPaginas) echo ' - ';
                         }
-                        if ($_POST['pag'] != $totalPaginas) echo ' <a href="#" class="ss-next-pag"> '.file_get_contents('../../assets/images/SVG/flecha-right.svg').' </a>';
+                        if ($_POST['pag'] != $totalPaginas) echo ' <a href="#" class="ss-next-pag"> '.file_get_contents('../../images/SVG/flecha-right.svg').' </a>';
                         echo '</div>';
                     }
         }

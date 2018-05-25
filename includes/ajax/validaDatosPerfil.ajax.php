@@ -127,7 +127,7 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
 
             //SE GENERA EL NOMBRE DE LA RUTA ,CARPETA Y IMAGEN 
             $raizServer = $_SERVER['DOCUMENT_ROOT'];
-            $ruta = $_SERVER['DOCUMENT_ROOT'].'/assets/images/profiles';
+            $ruta = $_SERVER['DOCUMENT_ROOT'].'/images/profiles';
             $destino = $conexion->query('SELECT DNI, img_perfil FROM usuario WHERE email LIKE "'.$_SESSION['email'].'";');
             $destino = $destino->fetch(PDO::FETCH_ASSOC);
             $carpeta = 'dir-'.$destino['DNI'];
@@ -152,7 +152,7 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
             $destinoFinal = $ruta.'/'.$carpeta.'/'.$archivo;   
            if (move_uploaded_file ( $_FILES [ 'img_perfil' ][ 'tmp_name' ], $destinoFinal)){
                 $errores['subida']=true;
-                $rutaServidor ='/assets/images/profiles/'.$carpeta.'/'.$archivo;
+                $rutaServidor ='/images/profiles/'.$carpeta.'/'.$archivo;
                 if($conexion->query('UPDATE usuario SET img_perfil = "'.$rutaServidor.'" WHERE email LIKE "'.$_SESSION['email'].'";')){
                     $errores['img_src'] = $rutaServidor;
                 }else{
