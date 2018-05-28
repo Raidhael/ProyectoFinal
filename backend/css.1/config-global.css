@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html,body{
-    background-color: rgba(240, 240, 240, 0.459);
+    background-color: rgb(240, 240, 240);
     margin: 0;
     font-size: calc( 14px + 8 * ((100vw - 500px) / 1500))!important;
     font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
@@ -12,14 +12,6 @@ html,body{
     line-height: 1.6em;
     
 }
-html{
-    background: url(/backend/images/JPG/3.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
 main{
     position: relative;
     display: block;
@@ -31,49 +23,49 @@ main{
 }
 /*ESTILOS HEADER*/
 header{
-    display:none;    
-}
+    position: relative;
+    top:7vh;
+    left: 0;
+    margin:0;
+    width: 100%;
+    height: 13vh;
+    z-index: 10;
+    color:rgba(0, 0, 0, 0.863);
 
-.ss-main-titulo{
-    color: #eaf0f7;
+    letter-spacing: 0.5rem;
+    
+}
+#ss-main-titulo{
     text-transform: capitalize;
 }
 
 
 
-h1.ss-main-titulo{
-    position: absolute;
+header h1 {
     display: inline-block;
-    width: 100px;
+    width: 65%;
     font-family: "Whitney Cond A", "Whitney Cond B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
     font-size: 2rem;
     font-weight: 700;
     margin-left: 1rem;
-    text-transform: capitalize;
-    top:0;
-    left:120px;
+    border-bottom: 4px solid rgb(0, 0, 0);
+    width: 80%;
 
-    /*border-bottom: 4px solid rgb(0, 0, 0);*/
-    
 }
-.ss-logo-cine-mobile, .ss-logo-cine-mobile svg{
-    
+.ss-logo-cine-mobile, .ss-logo-cine-mobile img{
     position: absolute;
     display: inline-block;
     width: 70px;
     height: auto;
     top: 0;
     left:0;
-    padding: 0.5em;
+    padding:10px;
     object-fit: cover;
     margin : 0;
-    stroke:rgb(255, 0, 0);
-    stroke-width: 4;
-    z-index: 99999;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
 }
-#ss-show-navBar {
-    display: none;
-}
+
 .ss-logo-cine{
     display: none;
 }
@@ -85,7 +77,7 @@ h1.ss-main-titulo{
 
 /* Navegacion*/
 .ss-navBar , .ss-navBar ul , .ss-navBar ul li{
-    background:rgb(0, 0, 0);
+    background:rgb(0, 0, 0)!important;
 }
 .ss-navBar{
     width: 100%;
@@ -112,7 +104,7 @@ h1.ss-main-titulo{
     width: 100%;
     height: 0px;
     position: relative;
-    background-color: #111;
+    
     top:50px;
     left: 0;
     transition: 0.3s linear;
@@ -150,6 +142,8 @@ h1.ss-main-titulo{
     height: 40px;
     transition: 0.3s;
     fill: rgb(255, 255, 255)!important;
+    stroke: #111;
+    stroke-width: 15;
 }
 .ss-navBar ul li span.ss-home-icon svg {
     stroke: rgb(0, 102, 255);
@@ -241,97 +235,45 @@ h1.ss-main-titulo{
         width: 80%;
         padding:10px;
     }
+    /*HEADER*/
+    .ss-logo-cine, .ss-logo-cine img{
+        padding: 0;
+        position: relative;
+        display: inline-block;
+        width: 5vw;
+        padding: 5px;
+        min-width: 80px;
+        min-height: 90px;
+        top: 0;
+        left:0;
+        object-fit: cover!important;
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
+        border-radius: 20%;
+        margin : 0 1rem 0 0;
+    }
+
     .row{
         margin-top: 10%!important;
         margin-bottom: 10%!important;
     }
-    /*HEADER*/
-    .ss-navBar .ss-main-titulo {
-        display: none;
-    }
-    header .nav{
-        margin: 0.6em; 
-    }
-    header .navbar{
-        background:transparent!important;
-    }
-    header .navbar-collapse ul {
-        width: 70%;
-        letter-spacing: 1px;
-        margin: 0;
-        padding: 0;
-        
-    }
-    header .navbar-collapse ul li{
-        position: relative;
-        right: 0;
-        padding: 0;
-        margin:2px;
-        border-radius: 12px;
-        background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(91, 35, 105, 0)), color-stop(41%, #332e2ebe), color-stop(59%, #332e2ebe), color-stop(100%, rgba(91, 35, 105, 0)));
-        border: 2px solid rgba(211, 241, 235, 0.596)!important;
-        transition: 1s;
-    }
-    header .navbar-collapse ul li:hover , header .navbar-collapse ul li:hover a{ 
-        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%,rgba(211, 241, 235,0.267)), color-stop(41%, #111), color-stop(59%, #111), color-stop(100%, rgba(211, 241, 235,0.267)));
-    }
-    header .navbar-collapse ul li a{
-        color:rgb(255, 255, 255)!important; 
-        font-size: 0.8em;
-        text-transform: uppercase;
-    }
-    header *:not(.btn){
-        border:none!important;
-    }
+
+    
     header{
-        display: block;
         position: relative;
         top:0;
         left: 0;
         margin:0;
         width: 100%;
         height: 94px;
-        padding: 1em;
-        background: rgba(0, 0, 0);
-        color:rgb(139, 136, 136);
+        padding: 0;
+        background:rgb(0, 0, 0);
+        color:rgba(255, 255, 255, 0.89);
         z-index: 400;
-        border-bottom: 2px solid black;
     }
     header h1{
-        width: 10%;
-        margin: 0; 
-        text-align: right;
-        color: white!important;
-        /*border-bottom: 4px solid rgb(0, 0, 0);/*/
+        border-bottom: 4px solid rgba(255, 255, 255, 0.89);
     }
-    .ss-logo-cine{
-        padding: 0!important;
-        position: relative;
-        display: inline-block;
-        width: 5vw;
-        padding: 5px;
-        top: 0;
-        left:0;
-        object-fit: cover!important;
-        -webkit-filter: brightness(3);
-        filter: brightness(3);
-        border-radius: 20%;
-        margin : 0;
-    }
-    .ss-logo-cine svg {
-        margin: 0;
-        padding: 0;
-        max-width: 80px;
-        max-height: 80px;
-        position: relative;
-        top:0px;
-        margin-top: -15px;
-        left: 0;
-        stroke: rgba(255, 1, 1, 0.445);
-        stroke-width: 5;
-        animation:  ss-parpadeo 5s infinite,dash 5s infinite;
-    }
-
     .ss-logo-cine-mobile, .ss-logo-cine-mobile * {
         display:none;
     }
@@ -347,7 +289,6 @@ h1.ss-main-titulo{
     width: 100%!important;
     height: 40px!important;
     transition: 0.3s!important;
-    fill: rgba(0, 0, 0, 1);
 }
 .ss-navBar:hover ul li span.ss-home-icon svg , .ss-navBar-active  span.ss-home-icon svg{
     stroke: rgb(0, 102, 255)!important;
@@ -374,65 +315,22 @@ h1.ss-main-titulo{
 
 }
 /* FIN DE ICONOS NAVEGACION LATERAL*/
-#ss-show-navBar{
-    display:block;
-    top:50vh;
-    position: fixed;
-    height: 100px!important;
-    width: 40px!important;
-    background: transparent;
-    left:-40px;
-    z-index: 800;
-    transition: 1s;
-}
-#ss-show-navBar svg{
-    stroke: rgba(245, 242, 242, 0.603);
-    fill:black;
-    stroke-width: 5;
-    height: 100px;
-    width: 40px;
-    margin: 0;
-    padding: 0;
-    animation: ss-parpadeo 5s infinite,  dash 15s infinite;
-    transition: 1s;
-    stroke-dasharray: 100;
-}
-@keyframes dash {
-    to {
-      stroke-dashoffset: 1000;
-    }
-  }
-.boton-muestra-navBar-activo{
-    left:0px!important;
-}
-.boton-muestra-navBar {
-    transition: 1s;
-    left: 70px!important;
-}
-.boton-muestra-navBar svg{
-    transition: 1s;
-    transform: rotateY(180deg);
-}
-.muestra-navBar{
-    transition: 1s;
-    left:0!important;
-}
 .ss-navBar {
     display: block;
     position: fixed;
-    left: -70px;
+    left: 0;
     z-index: 30;
-    top:25vh!important;
     backface-visibility: hidden;
     width: 70px!important;
-    height: 20vh;
+    height: 100%!important;
     max-height: 100%!important;
-    transition: 1s;
+    transition: 0.5s ease;
 }
 .ss-navBar * {
     width: 100%!important;
 }
 .ss-navBar > ul {
+    top:25vh;
     display:block;
     width: 100%!important;
     opacity: 1;
@@ -513,4 +411,5 @@ h1.ss-main-titulo{
         min-height: 70vh;
         border-radius: 0;
       }
+
 }

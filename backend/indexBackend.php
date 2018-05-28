@@ -23,7 +23,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/sesiones/sesionObligat
         <div class="ss-actions">
             <!--GESTION DE USUARIOS , GESTION DE PELICULAS, SESIONES , SALIR-->
             <div class="ss-action-1">
-            <a href="/backend/peliculas.php">
+            <a href="/backend/insertaPelicula.php">
                 <span class="ss-titulo-accion">Añadir peliculas</span>
                 <div class="ss-item-accion">
                     <?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/backend/images/SVG/rollo-peli.svg')?>   

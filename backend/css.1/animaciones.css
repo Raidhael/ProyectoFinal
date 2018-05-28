@@ -1,0 +1,99 @@
+/*ANIMACION NAVBAR MOBILE*/
+.ss-navigation div{
+    display: block;
+    background-color: #fff;
+    height: 4px;
+    width: 30px;
+    display: block;
+    margin-top: 5px;
+    border-radius: 10px;
+    transition: .8s ease;
+}
+.ss-navBar-animation div:first-child{
+    transform: rotate(400deg) translate(0,12px);
+    background:linear-gradient(to right, #01ff16 0%,#01ff16 70%,rgb(0, 29, 31) 70%, rgb(0, 29, 31) 100% );
+    box-shadow: -8px 0px 15px 1px rgb(110, 241, 132); 
+}
+.ss-navBar-animation div:last-child{
+    transform: rotate(-400deg) translate(0,-12px);
+    background: linear-gradient(to right, rgb(31, 29, 29) 22%,rgb(31, 29, 29) 25%,#cf0404 25%, #cf0404 100%);
+    box-shadow: 8px 0px 15px 1px  rgb(255, 140, 140); 
+}
+
+.ss-navBar-animation div:nth-child(2){
+    -ms-transform: scale(0,0); 
+    -webkit-transform: scale(0,0); 
+    transform: scale(0,0); 
+}
+.ss-navBar-oculto {
+    opacity: 1!important;
+    margin-top:10px;
+    height: 200px!important;
+    z-index: 500;
+    visibility: visible!important;
+}
+.ss-navBar-contenido-oculto{
+    opacity: 1!important;
+    visibility: visible!important;
+    z-index:500;
+}
+
+.ss-navBar-movimiento {
+    opacity: 0.4!important;
+}
+/*FIN DE ANIMACION NAVBAR MOBILE*/
+/* Animaciones SLIDER*/
+@-webkit-keyframes ss-parpadeo {
+    0%   {stroke-width: 1;}
+    25%  {stroke-width: 25;}
+    50%  {stroke-width: 1;}
+    75%  {stroke-width: 25;}
+    100% {stroke-width: 1;}
+
+}
+
+/* Standard syntax */
+@keyframes ss-parpadeo {
+    0%   {stroke-width: 1;}
+    25%  {stroke-width: 25;}
+    50%  {stroke-width: 1;}
+    75%  {stroke-width: 25;}
+    100% {stroke-width: 1;}
+}
+
+ /*Animaciones carousel*/
+ .ss-fade-in {
+	opacity: 1;
+	animation-name: ss-fade-in;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.ss-fade-out {
+	opacity: 0;
+	animation-name: ss-fade-out;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-duration: 1s;
+}
+@keyframes ss-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes ss-fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+/*FIN DE ANIMACIONES SLIDER*/

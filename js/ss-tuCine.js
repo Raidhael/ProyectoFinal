@@ -6,32 +6,50 @@ $( function () {
    
     ss_slider_peliculas_active();
 
+
 });
 
 /*FUNCIONES*/ 
 /*control de eventos*/
-
 function controlaEventos () {
+    
     ss_navegationBar_active();
     ss_mobile_navigation_heigth();
     /* Eventos resolucion 1080 */
     if (window.matchMedia('(max-width: 1080px)').matches){
-        
         ss_mobile_navigation();
          if ($(window).scrollTop()!=0) $('.ss-navigation').parent().addClass('ss-navBar-movimiento');
-
-         
     }
+    muestraNavBarLateral()
     };
+    /*NAVBA*/
+    function muestraNavBarLateral(){
+        $(window).scroll(function (){
+            if($(window).scrollTop() != 0){
+                $('#ss-show-navBar').addClass('boton-muestra-navBar-activo');
+            }else{
+                $('#ss-show-navBar').removeClass('boton-muestra-navBar-activo');
+                $('#ss-show-navBar').removeClass('boton-muestra-navBar');
+                $('nav.ss-navBar').removeClass('muestra-navBar');
 
+            }
+        });
+        
+        $('#ss-show-navBar').click(function (){
+            $(this).toggleClass('boton-muestra-navBar');
+            $('nav.ss-navBar').toggleClass('muestra-navBar');
+        })
+    }
     /*Se añaade evento de movimiento*/
 function ss_navegationBar_active (){
         var ruta = window.location.pathname;
             ruta = ruta.split('/')[1];
             ruta = ruta.split('.')[0];
-            if (ruta == 'index') $('#ss-main-titulo').text('Inicio');
-            else $('#ss-main-titulo').text(ruta);
-            $('#ss-navBar-'+ruta).addClass('ss-navBar-active');
+            if (ruta == 'registro' || ruta == 'perfil') $('#ss-show-navBar').addClass('boton-muestra-navBar-activo');
+            if (ruta == '')$('.ss-main-titulo').text('Inicio');
+            else if (ruta == 'index') $('.ss-main-titulo').text('Inicio');
+            else $('.ss-main-titulo').text(ruta);
+            $('.ss-navBar-'+ruta).addClass('ss-navBar-active');
 }
 function ss_mobile_navigation() {
         //FUNCION DE NAVEGACION NAVBAR + CONTROL DE EVENTO

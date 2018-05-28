@@ -1,3 +1,7 @@
+<div id="ss-show-navBar">
+    <?php echo  file_get_contents($_SERVER['DOCUMENT_ROOT'].'/images/SVG/muestra-navBar.svg')?>
+</div>
+
 <nav class="ss-navBar">
     <div class="ss-navigation">
         <div></div>
@@ -5,7 +9,6 @@
         <div></div>
     </div>
     <ul>
-
         <li id="ss-navBar-index">
             <a href="/index.php">
                 <span class="ss-home-icon">
@@ -75,7 +78,8 @@
     </ul>
     <div class="ss-logo-cine-mobile">
         <a href="/">
-            <img src="images/PNG/logo-cine.png" alt="Logotipo">
-        </a>
+            <?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/images/SVG/iron-man.svg')?>
+        </a>   
     </div>
+    <h1 class="ss-main-titulo">a</h1>
 </nav>
