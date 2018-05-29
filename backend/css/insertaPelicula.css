@@ -1,15 +1,70 @@
+html{
+    background: url(/images/JPG/5.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    margin:0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+body{
+    
+    background: rgba(192, 191, 191, 0.562);
+}
 h1 {
     border-bottom:4px #000000 solid ;
 }
-.ss-grid-ultimas-peliculas{
+/* ESTILOS DE LA LISTA*/
+ul.nav li {
+    
+    background-image: linear-gradient(128deg, #004da7, #000000,#006c7d );
+}
+ul.nav li a {
+    color:white!important;
+}
+ul.nav > li.active a{
+    background-image: linear-gradient(128deg, #00262c, #000000,#00152c )!important;
+}
+/*BOTONES*/
+.btn-success{
+    background: rgb(0, 172, 163)!important;
+    color:black;
+    font-size: 1rem!important;
+    font-weight: 600!important;
+}
+.btn-danger {
+    background: rgb(255, 58, 51)!important;
+    color:black;
+    font-size: 1rem!important;
+    font-weight: 600!important;
+}
+/*EDITA PELICULAS*/
+.ss-grid-edita-peliculas{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows:5% 40% 5% 5% 1fr 5%;
+    grid-template-rows:10% 5% 40% 5% 5% 1fr 5%;
     padding: 1em;
+    min-height: 500px!important;
     
 }
-.ss-grid-ultimas-peliculas *:not(.ss-slider-new-navigation):not(svg):not(span):not(h2) {
-    background-color: #fff;
+.ss-grid-edita-acciones {
+    width: 100%;
+    grid-column: 1 /span 2;
+    grid-row: 1;
+    background: transparent!important;
+    margin-bottom: 10px;
+}
+.ss-grid-edita-acciones .btn {
+    padding: 15px!important;
+}
+.ss-grid-edita-peliculas *:not(.ss-slider-new-navigation):not(svg):not(span):not(h2) {
+    background-color: rgba(255, 255, 255);
     padding: 0.5px;
 }
 .ss-img-slider {
@@ -58,9 +113,64 @@ h1 {
     font-weight: normal;
     
 }
+.ss-slider-new-navigation {
+    grid-column: 1 /span 2;  grid-row:6;
+    width: 100%;
+    height: 100%;
+    top:2vh;
+    position: relative;  
+    margin:0;
+}
+.ss-slider-new-navigation span svg{
+    background:linear-gradient(128deg, #004da7, #000000,#006c7d );
+    margin: 0;
+    stroke: rgb(0, 0, 0);
+    stroke-width: 7;
+    fill:rgb(255, 255, 255);
+    transition: 1.2s ease;
+    stroke-dasharray: 50%;
+    animation:  ss-parpadeo 5s infinite ,dash 5s infinite;
+}
+.ss-slider-navigation-left svg{
+    grid-column: 1;    grid-row:6;
+    height: 35px;
+    width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    position: relative;
+    top:0;
+}
+.ss-slider-navigation-right svg{
+    grid-column: 2;   grid-row :6;
+    height: 35px;
+    width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+     
+}
+.ss-rotacion-slider-nav{
+    transform: rotateX(720deg);
+}
+
+/*FIN EDITA PELICULAS*/
+/*ESTILOS DEL FORMULARIO*/
+#insertaPelicula{
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr ;
+    background: rgba(255, 255, 255, 0.445);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0.3em;
+}
+.ss-item-enviar {
+    color:white;
+    background-image: linear-gradient(128deg, #004da7, #000000,#006c7d );
+}
 @media only screen and (min-width: 1080px) {
-
-
     /*SLIDER GRID PELICULAS*/
     #insertaPelicula{
         display: grid;
@@ -73,39 +183,39 @@ h1 {
         width: 100%;
         height: 100%;
         grid-column: 1;
-        grid-row: 1 / span 3;
-        background-color: rgba(232, 250, 250, 0.4);
+        grid-row: 1 / span 4;
+        background-color: rgba(19, 56, 56, 0.4);
         border: 1px solid #111;
     }
 
-    .ss-item-titulo{
+    .ss-item-titulo-inserta{
         grid-column: 2 /span 3;
         grid-row: 1;
     }
-    .ss-item-specs{
+    .ss-item-specs-inserta{
         grid-row: 2;
         grid-column: 2;
         border-bottom: 2px solid #111;
     }
-    .ss-item-duracion {
+    .ss-item-duracion-inserta {
         grid-row: 2;
         grid-column: 3;
     }
-    .ss-item-sipnopsis{
+    .ss-item-sipnopsis-inserta{
         grid-row: 3;
         grid-column: 2 /span 3;
         max-height: 400px;
     }
 
-    .ss-item-sipnopsis p {
+    .ss-item-sipnopsis-inserta p {
         overflow: scroll;
         max-width: initial;
     }
 
-    .ss-item-titulo, .ss-item-sipnopsis {
+    .ss-item-titulo-inserta, .ss-item-sipnopsis-inserta {
         grid-column: 2 / span 3;
     }
-    .ss-item-titulo , .ss-item-duracion , .ss-item-sipnopsis {
+    .ss-item-titulo-inserta , .ss-item-duracion-inserta , .ss-item-sipnopsis-inserta {
         border-bottom: 2px solid  #111!important;
         border-right: 2px solid #111 !important;
     }
@@ -116,4 +226,105 @@ h1 {
         grid-column: 2 /span 3;
         grid-row: 4;
     }
+
+
+     /*SLIDER GRID PELICULAS*/
+     .ss-grid-ultimas-peliculas{
+        display: grid;
+        grid-template-columns: 50% 1fr 1fr;
+        grid-template-rows: 10% 10% 10% 1fr 10%;
+        
+    }
+    .ss-grid-edita-acciones {
+        background: transparent!important;
+        margin-bottom: 0.5em;
+        padding: 15px;
+        width: 100%;
+        grid-column: 1 /span 3;
+        grid-row: 1;
+    }
+    .ss-grid-edita-acciones .btn {
+        padding: 15px!important;
+    }
+    .ss-img-slider{
+        display: flex;
+        grid-column: 1;
+        grid-row: 2 / span 3;
+        background-color: #fff;
+        border: 1px solid #111;
+
+    }
+    .ss-img-slider img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-height: 520px!important;
+    }
+    .ss-item-titulo{
+        grid-row: 2;
+    }
+    .ss-item-sipnopsis{
+        grid-row: 4;
+        max-height: 400px;
+    }
+    .ss-item-sipnopsis p {
+        overflow: scroll;
+        max-width: initial;
+    }
+    .ss-item-specs{
+        grid-row: 3;
+        grid-column: 2;
+        border-bottom: 2px solid #111;
+    }
+    .ss-item-duracion {
+        grid-row: 3;
+        grid-column: 3;
+    }
+    .ss-item-titulo, .ss-item-sipnopsis {
+        grid-column: 2 / span 3;
+    }
+
+
+
+    .ss-item-titulo , .ss-item-duracion , .ss-item-sipnopsis {
+        border-bottom: 2px solid  #111!important;
+        border-right: 2px solid #111 !important;
+    }
+    .ss-slider-new-navigation{
+        justify-self: end;
+        justify-items: end;
+        justify-content: end;
+        grid-column: 2 /span 3;
+        grid-row: 5;
+    }
+
+
+    /*Navegacion del SLIDER ULTIMAS PELICULAS */
+    .ss-slider-new-navigation {
+        width: 50%;
+        top:1vh;
+        padding: 0;
+        margin:auto;
+    }
+    .ss-slider-new-navigation span{
+        width: 20px;
+        height: 20px;
+        display: inline-block;      
+    }
+
+    .ss-slider-navigation-right {
+        margin-left: 20%;
+        margin-right: 0%;
+    }
+    .ss-slider-new-navigation span svg {
+        width: 25px;
+        height: 25px;
+        position: relative;
+        fill:white;
+        stroke:purple;
+        stroke-width: 3;
+        background:transparent;
+        border-radius: none!important;
+    }
+/*FIN SLIDER ULTIAMS PELICULAS*/
 }

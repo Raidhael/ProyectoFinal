@@ -1,11 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/sesiones/sesionObligatoria.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/conexiones/conexion-global.php';
 //SE VERIFICAN QUE LOS VALORES DE LA IMAGEN SON LOS CORRECTOS
 if (isset($_POST['insertar'])){
 //ARRAY PARA ERRORES PERSONALIZADOS
-$errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'sipnopsis'  => false, 'size'  => false , 'img'  => false , 'subida'  => false);
-    //CONEXION
-    require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/conexiones/conexion-global.php';
+$errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'sipnopsis'  => false, 'size'  => false , 'img'  => false , 'subida'  => false);    
     if (isset($_POST['titulo']) && !empty($_POST['titulo']) ){
         $sql = $conexion->prepare('SELECT count(*) FROM pelicula WHERE titulo LIKE :titulo ;');
         $sql->bindParam(':titulo', $_POST['titulo']);
@@ -109,31 +108,68 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
 ?>  
     <main class="ss-main-container">
         <div class="container-fluid">
-            <h1>Inserta Pelicula</h1>
-            <section class="row">
-            
-                <article>
-                <form action="#" id="insertaPelicula" method="post" enctype="multipart/form-data">
-                <input type="file" name="imagen" id="img_perfil" class="ss-img">
-                <input type="text" name="titulo" id="titulo" class="ss-item-titulo" placeholder="Inserta titulo">
-                <input type="text" name="tipo" id="tipo" class="ss-item-specs" placeholder=" Ej: Comedia-Romance-Drama">
-                <input type="number" name="duracion" id="duracion" class="ss-item-duracion" placeholder="Duracion en minutos">
-                <textarea name="sipnopsis" id="sipnopsis" cols="30" rows="10" class="ss-item-sipnopsis" placeholder="INSERTAR DESCRIPCION"></textarea>
-                <input type="submit" name="insertar" value="INSERTAR PELICULA" class="ss-item-enviar">
-        <?php
-            if (isset($erroresJSON))
-            echo '<input type="hidden" value="'.$erroresJSON.'">';
+            <ul class="nav nav-pills nav-justified">
+                <li id="ss-sesion" class="active"><a data-toggle="pill" href="#inserta">Inserta Pelicula</a></li>
+                <li id="ss-registrate"><a data-toggle="pill" href="#edita">Edita Pelicula</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="inserta" class="tab-pane fade in active">
+                    <section>
+                        <form action="#" id="insertaPelicula" method="post" enctype="multipart/form-data">
+                            <input type="file" name="imagen" id="img_perfil" class="ss-img">
+                            <input type="text" name="titulo" id="titulo" class="ss-item-titulo-inserta" placeholder="Inserta titulo">
+                            <input type="text" name="tipo" id="tipo" class="ss-item-specs-inserta" placeholder=" Ej: Comedia-Romance-Drama">
+                            <input type="number" name="duracion" id="duracion" class="ss-item-duracion-inserta" placeholder="Duracion en minutos">
+                            <textarea name="sipnopsis" id="sipnopsis" cols="30" rows="10" class="ss-item-sipnopsis-inserta" placeholder="INSERTAR DESCRIPCION"></textarea>
+                            <input type="submit" name="insertar" value="INSERTAR PELICULA" class="ss-item-enviar">      
+                            <?php
+                                if (isset($erroresJSON))
+                                echo '<input type="hidden" value="'.$erroresJSON.'">';
 
-        ?>
-            </form>
+                            ?>
+                        </form>
+                    </section>
+                </div>
+                <div id="edita" class="tab-pane fade in">
+                    <section class="ss-grid-edita-peliculas">
+                    <div class="ss-grid-edita-acciones">
+                        <button class="btn btn-danger btn-lg pull-left"> ELIMINAR</button>
+                        <button class="btn btn-success btn-lg pull-right"> EDITAR</button>
+                    </div>
+                            <?php
+                           $sql = 'SELECT * FROM pelicula LIMIT 1';
+                            $resultado = $conexion->query($sql);
+                            $pelicula = $resultado->fetch(PDO::FETCH_ASSOC);
+                            echo '
+                                <figure id="'.$pelicula['id_pelicula'].'" class="ss-img-slider">
+                                    <a href="cartelera.php?id='.$pelicula['id_pelicula'].'"><img src="'.$pelicula['img_pelicula'].'" alt="'.$pelicula['titulo'].'"></a>
+                                </figure>
+                                <div class="ss-item-titulo">  <h4>'.$pelicula['titulo'].'</h4></div>                   
+                                <div class="ss-item-specs">   <h5>'.$pelicula['tipo'].'</h5></div>
+                                <div class="ss-item-duracion"><h5>'.$pelicula['duracion'].'min</h5></div>
+                                <div class="ss-item-sipnopsis">
+                                    '.$pelicula['sipnopsis'].' 
+                                </div>';
+                            ?>
+                        <div id="new-navigation" class="ss-slider-new-navigation">
+                            <span class="ss-slider-navigation-left pull-left">
+                                <?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/images/SVG/flecha-left.svg');?>
+                                </span>
+                                <span class="ss-slider-navigation-right pull-right">
+                                <?php echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/images/SVG/flecha-right.svg');?>
+                            </span>
+                        </div>
+                    </section>
+                </div>   
+            </div>   
+        </div>
 
-            </article>
-            </section>
         </div>
     </main>    
 
 <script src="/backend/js/jquery.js"></script>
 <script src="/backend/js/bootstrap.min.js"></script>
 <script src="/backend/js/ss-tuCine.js"></script>
+<script src="/backend/js/ss-insertaPeliculas.js"></script>
 </body>
 </html>

@@ -397,11 +397,6 @@ h1.ss-main-titulo{
     transition: 1s;
     stroke-dasharray: 100;
 }
-@keyframes dash {
-    to {
-      stroke-dashoffset: 1000;
-    }
-  }
 .boton-muestra-navBar-activo{
     left:0px!important;
 }

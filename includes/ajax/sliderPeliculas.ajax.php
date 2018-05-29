@@ -16,8 +16,20 @@
 
         if ($_POST['action'] == 'next'){
             if (isset($_POST['id']) && $_POST['id'] != null &&  is_numeric($_POST['id'])){
+
                 if ($_POST['id']+1 <= $ultimoElemento){
                     $id = $_POST['id'] + 1;
+                    $sql = $conexion->prepare('SELECT count(*) FROM pelicula WHERE id_pelicula = :id;');
+                    $sql->bindParam(':id',$id);
+                    $sql->execute();
+                    $existe = $sql->fetch(PDO::FETCH_NUM)[0];
+                    while ($id <= $ultimoElemento && $existe == 0){
+                        $sql = $conexion->prepare('SELECT count(*) FROM pelicula WHERE id_pelicula = :id;');
+                        $sql->bindParam(':id',$id);
+                        $sql->execute();
+                        $existe = $sql->fetch(PDO::FETCH_NUM)[0];
+                        if ($existe == 0) $id++; 
+                    }
                     $siguienteElemento = $conexion->prepare('SELECT * FROM pelicula WHERE id_pelicula = :id;');
                     $siguienteElemento->bindParam(':id',$id);
                     $siguienteElemento->execute();
@@ -36,6 +48,17 @@
                 //Se saca el ultimo elemento de la tabla para no exceder el limite
                 if ($_POST['id']-1 >=$primerElemento){
                     $id = $_POST['id'] - 1;
+                    $sql = $conexion->prepare('SELECT count(*) FROM pelicula WHERE id_pelicula = :id;');
+                    $sql->bindParam(':id',$id);
+                    $sql->execute();
+                    $existe = $sql->fetch(PDO::FETCH_NUM)[0];
+                    while ($id >= $primerElemento && $existe == 0){
+                        $sql = $conexion->prepare('SELECT count(*) FROM pelicula WHERE id_pelicula = :id;');
+                        $sql->bindParam(':id',$id);
+                        $sql->execute();
+                        $existe = $sql->fetch(PDO::FETCH_NUM)[0];
+                        if ($existe == 0) $id--; 
+                    }
                     $siguienteElemento = $conexion->prepare('SELECT * FROM pelicula WHERE id_pelicula = :id;');
                     $siguienteElemento->bindParam(':id',$id);
                     $siguienteElemento->execute();

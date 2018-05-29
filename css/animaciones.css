@@ -95,5 +95,9 @@
 	}
 }
 
-
+@keyframes dash {
+    to {
+      stroke-dashoffset: 1000;
+    }
+  }
 /*FIN DE ANIMACIONES SLIDER*/

@@ -96,8 +96,6 @@ function ss_mobile_navigation_heigth(){
 
 
 /*Funciones slider ultimas peliculas*/
-
-
 function ss_slider_peliculas_active () {
     $('.ss-slider-navigation-right').click( function (){
         $('.ss-slider-navigation-right svg').toggleClass('ss-rotacion-slider-nav');
@@ -152,7 +150,5 @@ function ss_slider_peliculas_active () {
         });
     });
 }
-
-
 /*FIN funciones slider ultimas peliculas*/
 

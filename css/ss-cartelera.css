@@ -1,0 +1,247 @@
+html{
+    background: url(/images/JPG/6.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+html,body{
+    margin:0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    perspective: 1;
+    
+}
+
+a {
+    text-decoration: none!important;
+}
+body{
+    background: rgba(0, 0, 0, 0.562);
+}
+.container-fluid{
+    padding: 0;
+}
+/*Cartelera*/
+.ss-grid-cartelera-pelicula{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 60vh 10% 10% 200px;
+    background: rgba(255, 255, 255, 0.589);
+    border: 2px solid black;
+}
+.ss-cartelera-item-img{
+    grid-column: 1 /span 2;
+    grid-row: 1;
+}
+.ss-cartelera-item-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ss-cartelera-item-titulo{
+    display:flex;
+    flex-direction: row;    
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: bold;
+    letter-spacing: 5px;
+    grid-column: 1 /span 2;
+    grid-row: 2;
+    color:black;
+    background:rgba(17, 17, 17, 0.295);
+    height: 100%;
+    padding: 15px;
+    margin: 0;
+}
+.ss-cartelera-item-tipo{
+    grid-column: 1;
+    grid-row: 3;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.ss-cartelera-item-duracion{
+    grid-column:2;
+    grid-row: 3;
+    text-align: center;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.ss-cartelera-item-sipnopsis{
+    background:rgba(17, 17, 17, 0.295);
+    grid-column: 1 /span 2;
+    grid-row: 4;
+    overflow: scroll;
+    text-align: justify;
+    overflow-x: hidden;
+    font-size: 0.7em;
+    padding: 15px;
+    color:rgb(0, 0, 0);
+
+}
+.ss-grid-cartelera{
+    margin-bottom: 10%;
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 1vh;
+
+}
+.ss-grid-cartelera-item::nth-child(-n+2){
+    grid-row:2;
+}
+.ss-grid-cartelera-item::nth-child(-n+4){
+    grid-row:3;
+}
+.ss-grid-cartelera-item::nth-child(-n+6){
+    grid-row:4;
+}
+.ss-cartelera-paginacion , .ss-cartelera-paginacion a{
+    margin:0;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0.3em;
+    color:rgb(253, 253, 253);
+    font-weight: bold;
+}
+.ss-cartelera-paginacion .ss-pag-actual {
+    color:rgb(255, 0, 0)!important;
+    font-size: 21px;
+}
+
+
+.ss-grid-cartelera-item figure img {
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 180px;
+    max-height: 180px;
+    overflow: hidden;
+    
+}
+.ss-grid-cartelera-item figure figcaption h4{
+    overflow: hidden;
+    position: sticky;
+    font-size: 1em;
+    color: rgb(255, 235, 235);
+    z-index: 3;
+    text-align: center;
+    font-weight: 500!important;
+    padding: 1em;
+}   
+.ss-prev-pag svg, .ss-next-pag svg {
+    width: 17px;
+    height: 17px;
+    animation:ss-parpadeo 5s infinite, dash 5s infinite;
+    stroke: rgb(245, 3, 3)!important;
+    transition: 1s;
+}
+
+
+@media only screen and (min-width: 1080px) {
+    .ss-grid-cartelera{
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(3, 1fr);
+        
+        margin-bottom: 0;
+    }
+    .ss-grid-cartelera * {
+        background: transparent;
+    }
+    .ss-grid-cartelera-item:nth-child(even){
+        grid-row:2;
+    }
+    .ss-grid-cartelera-item:nth-child(odd){
+        grid-row:3;
+    }
+    /*COMPONENTES GRID CARTELERA*/
+
+    .ss-grid-cartelera * {
+        width: 100%;
+        justify-content: center;
+        vertical-align: center;
+        transition: 1s;
+    }
+    .ss-grid-cartelera-item  figure img{
+        position: relative;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        max-height: 500px!important;
+        top: 0;
+    }
+
+
+    /*GRID PELICULA*/
+    
+.ss-grid-cartelera-pelicula{
+    margin-top: 5%;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 30% 1fr;
+    grid-template-rows:  1fr 10% 50vh;
+    background: rgba(255, 255, 255, 0.589);
+    border: 2px solid black;
+}
+.ss-cartelera-item-img{
+    grid-column: 1;
+    grid-row: 1 /span 3;
+}
+.ss-cartelera-item-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 60vh;
+}
+.ss-cartelera-item-titulo{
+    display:flex;
+    flex-direction: row;    
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: bold;
+    letter-spacing: 5px;
+    grid-column: 2 /span 3;
+    grid-row: 1;
+    color:black;
+    background:rgba(17, 17, 17, 0.295);
+    height: 100%;
+    padding: 15px;
+    margin: 0;
+}
+.ss-cartelera-item-tipo{
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.ss-cartelera-item-duracion{
+    grid-column:3;
+    grid-row: 2;
+    text-align: center;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.ss-cartelera-item-sipnopsis{
+    background:rgba(17, 17, 17, 0.295);
+    grid-column: 2 /span 3;
+    grid-row: 3;
+    overflow: scroll;
+    text-align: justify;
+    overflow-x: hidden;
+    font-size: 0.7em;
+    padding: 15px;
+    color:rgb(0, 0, 0);
+
+}
+
+
+}

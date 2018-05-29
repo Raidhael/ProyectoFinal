@@ -5,7 +5,6 @@ $( function () {
     $(window).resize(controlaEventos);
    
     ss_slider_peliculas_active();
-
 });
 
 /*FUNCIONES*/ 
