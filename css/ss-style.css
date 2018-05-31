@@ -136,7 +136,11 @@
         color:black!important;
         font-size: 21px;
     }
-
+    .ss-grid-cartelera figcaption h5{
+        color:black;
+        font-weight: 700;
+        font-size: 0.8em;
+    }
 
     .ss-grid-cartelera-item figure img {
         padding: 2px;
@@ -159,15 +163,26 @@
 /*Ultima promocion*/
     .ss-grid-ultimaPromocion{
         display: grid;
+        position: relative;
+        margin-bottom: 20%;
         grid-template-columns: 1fr;
         grid-template-rows: 10% 1fr 10% 100px;
+        background: transparent;
+
     }
     .ss-grid-ultimaPromocion * {
         grid-column: 1
     }
     .ss-grid-item-ultimaPromocion-texto {
-        background: #fff;
-        overflow: scroll;
+        padding: 1em;
+        color:black;
+        font-weight: 400;
+        line-height: 1.6rem;
+        overflow: hidden;
+        background: transparent;
+        border: #111 solid 1px;
+        overflow: scroll
+        ;
     }
 /*Fin ultima promocion*/
 /*FIN MAIN*/
@@ -367,7 +382,7 @@
         position: relative;
         grid-template-columns:50% 1fr;
         grid-template-rows: 10% 10% 1fr;
-        grid-gap: 5%;
+        grid-gap: 1%;
         
     }
     .ss-grid-item-ultimaPromocion-imagen{
@@ -389,7 +404,9 @@
     .ss-grid-item-ultimaPromocion-texto{
         font-size: 14px;
         text-align: justify;
-        background: #111;
+        background: rgba(255, 255, 255, 0.425);
+        border: 2px solid black;
+        color: black;
         grid-column: 2;
         grid-row: 3;
         height: 100%;

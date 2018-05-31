@@ -235,12 +235,17 @@ function envioFormulario () {
             $.ajax({
                 url: 'includes/ajax/validaFormulario.ajax.php',
                 type: 'post',
-                dataType: 'text',
+                dataType: 'json',
                 data: {'nickname':nickname, 'password':pwd,'dni':dni,'nombre':nombre, 'ape_1':ape_1, 'ape_2':ape_2,'email': email,
                 'fecha': date},
                 success: function (data){
-                    console.log('hecho');
-                    console.log(data);
+                    if (data) {
+                        $correcto = '<div class="alert alert-success"><strong>¡BIENVENIDO!</strong> ¡YA PUEDES INICIAR SESIÓN!</div>';
+                        
+                        $('body').prepend($correcto);
+                        $('#ss-sesion>a').trigger('click');
+
+                    }
                 },
                 error: function () {
                     alert('No va');

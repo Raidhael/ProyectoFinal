@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/sesiones/sesionObligatoria.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/conexiones/conexion-global.php';
 //SE VERIFICAN QUE LOS VALORES DE LA IMAGEN SON LOS CORRECTOS
+$alerta='';
 if (isset($_POST['insertar'])){
 //ARRAY PARA ERRORES PERSONALIZADOS
 $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'sipnopsis'  => false, 'size'  => false , 'img'  => false , 'subida'  => false);    
@@ -82,12 +83,14 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
         $sql->bindParam(':sipnopsis', $sipnopsis);
         $sql->bindParam(':img_pelicula', $rutaServer);
         if ($sql->execute()){
-            echo '<h1> TODO CORRECTO</h1>';
+            $alerta='<div class="alert alert-success">Se ha insertado correctamente la película</div>';
         }else{
-            echo '<h1> ¡Ups! No se ha podido insertar la pelicula</h1>';
+            $alerta='<div class="alert alert-danger"> ¡Ups! No se ha podido insertar la película</div>';
         }
-    }else
-    $erroresJSON = json_encode($errores);
+    }else{
+        $alerta='<div class="alert alert-danger"> ¡Ups! No se ha podido insertar la película</div>';
+        $erroresJSON = array(json_encode($errores));
+    }
 }
 ?>
 
@@ -105,8 +108,11 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
 <body>
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].'/backend/includes/navBar.inc.php';
+
 ?>  
+    
     <main class="ss-main-container">
+    <?php     echo $alerta;  ?>
         <div class="container-fluid">
             <ul class="nav nav-pills nav-justified">
                 <li id="ss-sesion" class="active"><a data-toggle="pill" href="#inserta">Inserta Pelicula</a></li>
@@ -124,8 +130,8 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
                             <input type="submit" name="insertar" value="INSERTAR PELICULA" class="ss-item-enviar">      
                             <?php
                                 if (isset($erroresJSON))
-                                echo '<input type="hidden" value="'.$erroresJSON.'">';
-
+                                //echo '<input type="hidden" id="errores" value='.$erroresJSON[0].'">';
+                               // var_dump();
                             ?>
                         </form>
                     </section>

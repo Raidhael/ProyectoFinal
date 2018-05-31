@@ -19,6 +19,9 @@ html{
     -o-background-size: cover;
     background-size: cover;
 }
+.container-fluid{
+    background-color: rgba(255, 255, 255, 0.514)!important;
+}
 
 main{
     position: relative;
@@ -29,6 +32,7 @@ main{
 .row {
     margin-top: 0!important;
 }
+
 /*ESTILOS HEADER*/
 header{
     display:none;    
@@ -228,6 +232,7 @@ h1.ss-main-titulo{
 
 @media only screen and (min-width: 1080px){
     /*Config global titulo seccion*/
+
     .ss-header-item{
         grid-row: 1 ;
         grid-column: 1;
@@ -242,7 +247,7 @@ h1.ss-main-titulo{
         padding:10px;
     }
     .row{
-        margin-top: 10%!important;
+        margin-top: 5%!important;
         margin-bottom: 10%!important;
     }
     /*HEADER*/
@@ -378,19 +383,24 @@ h1.ss-main-titulo{
     display:block;
     top:50vh;
     position: fixed;
-    height: 100px!important;
+    height: 45px;
+    border-radius: 0 15px 15px 0;
     width: 40px!important;
     background: transparent;
     left:-40px;
     z-index: 800;
     transition: 1s;
+    
+    background-color: rgb(8, 0, 0);
 }
 #ss-show-navBar svg{
-    stroke: rgba(245, 242, 242, 0.603);
-    fill:black;
+    stroke: rgba(150, 149, 144, 0.466);
+    fill: red;
     stroke-width: 5;
-    height: 100px;
-    width: 40px;
+    border-radius: 0 15px 15px 0;
+    margin:auto;
+    height: 40px;
+    width: 30px;
     margin: 0;
     padding: 0;
     animation: ss-parpadeo 5s infinite,  dash 15s infinite;

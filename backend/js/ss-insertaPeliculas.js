@@ -1,8 +1,5 @@
 $(function () {
     ss_eliminar_pelicula();
-    $('.btn-success').click(function (){
-        $('#new-navigation').find('.ss-slider-navigation-right').trigger('click');
-    });
 });
 
 

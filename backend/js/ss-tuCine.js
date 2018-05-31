@@ -17,9 +17,7 @@ function controlaEventos () {
     if (window.matchMedia('(max-width: 1080px)').matches){
         
         ss_mobile_navigation();
-         if ($(window).scrollTop()!=0) $('.ss-navigation').parent().addClass('ss-navBar-movimiento');
-
-         
+         if ($(window).scrollTop()!=0) $('.ss-navigation').parent().addClass('ss-navBar-movimiento');    
     }
     };
 

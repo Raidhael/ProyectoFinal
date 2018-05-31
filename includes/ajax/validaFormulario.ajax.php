@@ -101,7 +101,7 @@ if (isset($_POST)){
 
     //EN CASO DE SER TRUE SE AÑADE EL USUARIO A LA BASE DE DATOS - REGISTRO COMPLETADO SIN NINGUNA FALLA
     if ($bandera){
-        echo 'Si que entra';
+        
         $sql = $conexion->prepare("INSERT INTO usuario (nickname, clave, DNI , nombre, ape1, ape2 ,email , fecha_nac, tipo) VALUES(:nickname,:clave,:dni,:nombre,:ape_1 ,:ape_2,:email,:fecha,'usuario');");
         $sql->bindParam(':nickname', $_POST['nickname']);
         $sql->bindParam(':clave', $clave);

@@ -111,6 +111,7 @@ function ss_slider_peliculas_active () {
             },
             success: function (data){
                $('figure.ss-img-slider').attr('id',data['id_pelicula']);
+               $('figure.ss-img-slider a').attr('href', 'cartelera.php?id='+data['id_pelicula']);
                $('figure.ss-img-slider img').attr('src', data['img_pelicula']).attr('alt',data['titulo']);
                $('div.ss-item-titulo h4').html(data['titulo']);
                $('div.ss-item-specs h5').html(data['tipo']);
