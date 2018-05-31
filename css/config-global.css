@@ -181,55 +181,6 @@ h1.ss-main-titulo{
 
 }
 /*FIN DE ICONOS SVG*/
-/*MODALES BS*/
-.modal-dialog {
-    z-index: 99999;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    
-  }
-  .modal-body{
-      background: transparent;
-      height: 80vh;
-  }
-  .modal-content {
-    background: rgba(0, 0, 0, 0.493);
-    color:white;
-    height: auto;
-    min-height: 70vh;
-    border-radius: 0;
-  }
-  .modal-content h3{
-      width: 85%;
-      color:#fff;
-      text-align: center;
-      display: inline-block;
-  }
-  .modal-header{
-      background: #111;
-  }
-  .modal-header button {
-      width: 10%;
-      opacity: 1;
-  }
-  .modal-header button svg {
-    background:transparent;
-    opacity: 1;
-    stroke-width: 1;
-    stroke:#fff;
-    fill:#fff;
-    opacity: 1;
-    width: 25px;
-    height: 25px;
-    font-weight: bold;
-    z-index: inherit;
-    display: inline-block;
-    transition: 2s;
-    
-  }
-
-
 @media only screen and (min-width: 1080px){
     /*Config global titulo seccion*/
 
@@ -490,32 +441,4 @@ h1.ss-main-titulo{
 .ss-navBar ul li:hover:not(.ss-navBar-active) *{
     height: 45px!important;
 }
-    /*MODAL BS*/
-    .modal-header button:hover svg {
-        color: #fff;
-        box-shadow: none;
-        text-shadow: none;
-        stroke-width: 2;
-        stroke:rgb(7, 107, 90);
-        fill:white;
-        transform: rotate(360deg);
-        
-    }
-    .modal-dialog {
-        width: 60vw;
-        height: 100vh;
-        margin-left: 25%;
-        
-        
-      }
-      .modal-body{
-          background: transparent;
-          height: 70vh;
-      }
-      .modal-content {
-        color:white;
-        height: auto;
-        min-height: 70vh;
-        border-radius: 0;
-      }
 }

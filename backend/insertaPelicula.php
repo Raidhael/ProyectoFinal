@@ -139,8 +139,9 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
                 <div id="edita" class="tab-pane fade in">
                     <section class="ss-grid-edita-peliculas">
                     <div class="ss-grid-edita-acciones">
-                        <button class="btn btn-danger btn-lg pull-left"> ELIMINAR</button>
-                        <button class="btn btn-success btn-lg pull-right"> EDITAR</button>
+                        <button id="confirm-delete" class="btn btn-danger btn-lg pull-left" data-toggle="modal" data-target="#borrado"> ELIMINAR</button>
+                        
+                        <button id="edicion" class="btn btn-success btn-lg pull-right" data-toggle="modal" data-target="#ss-edicion-pelicula"> EDITAR</button>
                     </div>
                             <?php
                            $sql = 'SELECT * FROM pelicula LIMIT 1';
@@ -148,7 +149,7 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
                             $pelicula = $resultado->fetch(PDO::FETCH_ASSOC);
                             echo '
                                 <figure id="'.$pelicula['id_pelicula'].'" class="ss-img-slider">
-                                    <a href="cartelera.php?id='.$pelicula['id_pelicula'].'"><img src="'.$pelicula['img_pelicula'].'" alt="'.$pelicula['titulo'].'"></a>
+                                    <img src="'.$pelicula['img_pelicula'].'" alt="'.$pelicula['titulo'].'">
                                 </figure>
                                 <div class="ss-item-titulo">  <h4>'.$pelicula['titulo'].'</h4></div>                   
                                 <div class="ss-item-specs">   <h5>'.$pelicula['tipo'].'</h5></div>
@@ -172,7 +173,41 @@ $errores = array('titulo' => false , 'tipo'  => false, 'duracion'  => false, 'si
 
         </div>
     </main>    
+    <div class="modal fade" id="borrado" tabindex="-1" role="dialog" aria-labelledby="borrado o" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="borrado">¿Seguro que desea borrar la imagen?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info"  data-dismiss="modal">CANCELAR</button>
+                    <button  id="borrar" class="btn btn-danger" data-dimiss="modal" >BORRAR</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+        <div class="modal fade" id="ss-edicion-pelicula" tabindex="-1" role="dialog" aria-labelledby="borrado o" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="borrado">¿Seguro que desea editar la imagen?</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success"  data-dismiss="modal">EDITAR</button>
+                <button type="button" class="btn btn-warning"  data-dismiss="modal">CANCELAR</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 <script src="/backend/js/jquery.js"></script>
 <script src="/backend/js/bootstrap.min.js"></script>
 <script src="/backend/js/ss-tuCine.js"></script>
