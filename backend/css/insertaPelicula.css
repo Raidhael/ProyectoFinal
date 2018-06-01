@@ -12,6 +12,7 @@ html,body{
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    font-size: 1em!important;
 }
 body{
     
@@ -153,7 +154,13 @@ ul.nav > li.active a{
 .ss-rotacion-slider-nav{
     transform: rotateX(720deg);
 }
-
+/*Estilos del formulario*/
+label{
+    color: red;
+}
+input , textarea{
+    width: 100%;
+}
 /*FIN EDITA PELICULAS*/
 /*ESTILOS DEL FORMULARIO*/
 #insertaPelicula, #ss-edita-pelicula{
@@ -207,6 +214,7 @@ ul.nav > li.active a{
   #ss-edicion-pelicula .modal-body{
       background: transparent;
       height: auto;
+      margin: 7% 0px;
   }
   #ss-edicion-pelicula .modal-content {
     background: rgba(0, 0, 0, 0.459);
@@ -214,34 +222,60 @@ ul.nav > li.active a{
     min-height: 100vh;
     border-radius: 0;
   }
+  #ss-edicion-pelicula .ss-item-enviar{
+    background-image: linear-gradient(128deg, #79040e, #000000,#b80128 );
+  }
 @media only screen and (min-width: 1080px) {
     /*SLIDER GRID PELICULAS*/
     #insertaPelicula, #ss-edita-pelicula{
         display: grid;
         grid-template-columns: 50% 1fr 1fr;
         grid-template-rows: 10% 10% 1fr 10%;
-        
+        margin: 0;
+        padding: 0;
     }
-    .ss-img{
+    .ss-img {
         display: flex;
         width: 100%;
         height: 100%;
         grid-column: 1;
-        grid-row: 1 / span 4;
+        grid-row: 2 / span 4;
         background-color: rgba(19, 56, 56, 0.4);
         border: 1px solid #111;
+        border-top: none;
+        justify-content: center;
+        
     }
-
+    label#alerta_ss-img {
+        display: block;
+        background: rgba(19, 56, 56, 0.4);
+        margin: 0;
+        padding: 0;
+        grid-column: 1;
+        grid-row: 1;
+    }
     .ss-item-titulo-inserta{
         grid-column: 2 /span 3;
         grid-row: 1;
     }
-    .ss-item-specs-inserta{
+    .ss-item-titulo-inserta input , .ss-item-specs-inserta input , .ss-item-duracion-inserta input, .ss-item-sipnopsis-inserta textarea{
+        width: 100%;
+        margin: 0;
+        padding: 0;       
+    }
+    label {
+        color:red;
+        font-weight: 700;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    .ss-item-specs-inserta {
         grid-row: 2;
         grid-column: 2;
         border-bottom: 2px solid #111;
     }
-    .ss-item-duracion-inserta {
+    .ss-item-duracion-inserta{
         grid-row: 2;
         grid-column: 3;
     }
@@ -251,7 +285,7 @@ ul.nav > li.active a{
         max-height: 400px;
     }
 
-    .ss-item-sipnopsis-inserta p {
+    .ss-item-sipnopsis-inserta textarea  {
         overflow: scroll;
         max-width: initial;
     }

@@ -14,7 +14,7 @@ if ((isset($_POST['id']) && $_POST['id'] != null) && (isset($_POST['valor']) && 
         
     }else if ($_POST['id'] =='nickname'){
         //VALIDACION DE NICKNAME
-        $pattern =" /^[\w\s]{4,16}$/";
+        $pattern ="/^[\w\s]{4,16}$/";
         if (preg_match($pattern , $_POST['valor']))
             $bandera=true;
         else

@@ -88,7 +88,7 @@ function ss_slider_peliculas_active () {
             dataType:'json',
             data: {'id':id, 'action':'next'},
             beforeSend : function (){
-                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-in').addClass('ss-fade-out');
+                $('.ss-grid-edita-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *):not(.ss-grid-edita-acciones):not(.ss-grid-edita-acciones *)').removeClass('ss-fade-in').addClass('ss-fade-out');
             },
             success: function (data){
                $('figure.ss-img-slider').attr('id',data['id_pelicula']);
@@ -100,7 +100,7 @@ function ss_slider_peliculas_active () {
 
             },
             complete: function () {
-                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-out').addClass('ss-fade-in');
+                $('.ss-grid-edita-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *):not(.ss-grid-edita-acciones):not(.ss-grid-edita-acciones *)').removeClass('ss-fade-out').addClass('ss-fade-in');
             }
         });
     });
@@ -114,7 +114,7 @@ function ss_slider_peliculas_active () {
             dataType:'json',
             data: {'id':id, 'action':'prev'},
             beforeSend : function (){
-                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-in').addClass('ss-fade-out');
+                $('.ss-grid-edita-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *):not(.ss-grid-edita-acciones):not(.ss-grid-edita-acciones *)').removeClass('ss-fade-in').addClass('ss-fade-out');
             },
             success: function (data){
                $('figure.ss-img-slider').attr('id',data['id_pelicula']);
@@ -126,7 +126,7 @@ function ss_slider_peliculas_active () {
 
             },
             complete: function () {
-                $('.ss-grid-ultimas-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *)').removeClass('ss-fade-out').addClass('ss-fade-in');
+                $('.ss-grid-edita-peliculas *:not(h2):not(.ss-slider-new-navigation):not(.ss-slider-new-navigation *):not(.ss-grid-edita-acciones):not(.ss-grid-edita-acciones *)').removeClass('ss-fade-out').addClass('ss-fade-in');
             }
         });
     });

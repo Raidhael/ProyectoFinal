@@ -85,7 +85,7 @@ require_once './includes/conexiones/conexion-global.php';
                 <article class="ss-grid-ultimaPromocion">
                     <h2 class="ss-header-item">Ultima Promocion</h2>
                     <figure class="ss-grid-item-ultimaPromocion-imagen">
-                        <img src="/images/jpg/avengers.jpg" alt="imagenPrueba" class="img-responsive">
+                        <img src="/images/jpg/5.jpg" alt="imagenPrueba" class="img-responsive">
                     </figure>
                     <h4 class="ss-grid-item-ultimaPromocion-titulo">Titulo de la promocion </h4>
                     <p class="ss-grid-item-ultimaPromocion-texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem animi nam quis amet sapiente quae quia natus vero molestiae maiores, placeat nulla reiciendis incidunt esse laudantium nobis adipisci odit tempora.</p>
